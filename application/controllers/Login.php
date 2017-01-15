@@ -28,7 +28,7 @@ class Login extends CI_Controller {
 			$q = $this->modelmu->select($data, 'login');
 			if(null !== $q){
 				$this->session->start();
-				$this->session_set_userdata('tipe_user' => $q['type_user']);
+				/*$this->session_set_userdata('tipe_user' => $q['type_user']);*/
 				if($q['type_user'] == 1){
 
 				}

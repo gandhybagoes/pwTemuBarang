@@ -23,8 +23,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 | a PHP script and you can easily do that on your own.
 |
 */
-$config['base_url'] = 'http://localhost:8888/pwTemuBarang/';
-
+$config['base_url'] = 'http://localhost/pwTemuBarang/';
 /*
 |--------------------------------------------------------------------------
 | Index File
@@ -159,7 +158,6 @@ $config['composer_autoload'] = FALSE;
 |
 */
 $config['permitted_uri_chars'] = 'a-z 0-9~%.:_\-';
-
 /*
 |--------------------------------------------------------------------------
 | Enable Query Strings
