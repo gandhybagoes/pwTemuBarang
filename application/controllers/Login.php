@@ -12,7 +12,31 @@ class Login extends CI_Controller {
 
 	public function index()
 	{
-		$this->load->view('pages/login');
+		$err = $this->input->get('err');
+		switch ($err) {
+			case 'ups':
+			$data['teror'] = "Username / Password Salah";
+				break;
+			case 'upk':
+			$data['teror'] = "Username / Password Kosong";
+				break;
+			case 'ad':
+			$data['teror'] = "Access Denied";
+				break;
+			default:
+			$data['teror'] = "";
+				break;
+		}
+			if ($this->session->userdata('tipe_user') == null)
+			{
+				$this->load->view('pages/login', $data);
+			}
+			else if ($this->session->userdata('tipe_user') == 1){
+				redirect('admin/'.$this->session->userdata('id_user'));
+			}
+			else {
+				redirect('siswa/'.$this->session->userdata('id_user'));
+			}
 	}
 
 	public function kliklogin()
@@ -27,17 +51,24 @@ class Login extends CI_Controller {
 				);
 			$q = $this->modelmu->select($data, 'login');
 			if(null !== $q){
-				$this->session->start();
-				$this->session_set_userdata('tipe_user' => $q['type_user']);
+				// $this->session->start();
+				$this->session->set_userdata('tipe_user', $q['type_user']);
+				$this->session->set_userdata('id_user', $q['id_user']);
 				if($q['type_user'] == 1){
-
+					redirect('admin/'.$q['id_user']);
 				}
 				else if($q['type_user'] == 0){
-
+					redirect('siswa/'.$q['id_user']);
 				}
 				else {
 					echo "<script>alert('Access Denied!')</script>";
+					redirect('login?err=ad');
 				}
+			}
+			else {
+				$this->error = "<script>alert('Username/Password Salah');</script>";
+				redirect('login?err=ups');
+				// echo $this->error;
 			}
 
 		}	
@@ -49,14 +80,28 @@ class Login extends CI_Controller {
 		else if(null !== $this->input->post('lgntwt'))
 		{
 			echo "iki twitter";
-			//api login fb
+						//api login fb
 		}
 		else if(null !== $this->input->post('fgtbtn')){
 			echo "iki forget pass";
 			//iki ngirim email
 		}
 		else {
-			echo "?????";
+			$this->error = "<script>alert('Username/Password Kosong');</script>";
+			redirect('login?err=upk');
 		}
+	}
+
+	public function routeAdmin($userid)
+	{
+		redirect('admin/'+$userid);
+	}
+
+	public function logout()
+	{
+		$this->session->unset_userdata('tipe_user');
+		$this->session->unset_userdata('id_user');
+		$this->session->sess_destroy();
+		redirect('login');
 	}
 }

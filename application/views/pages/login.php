@@ -23,6 +23,7 @@
       <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
       <script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
     <![endif]-->
+
   </head>
 
   <body>
@@ -37,9 +38,10 @@
 		      <form class="form-login" action="<?php echo site_url('login/kliklogin'); ?>" method="post">
 		        <h2 class="form-login-heading">sign in now</h2>
 		        <div class="login-wrap">
-		            <input type="text" name="username" class="form-control" placeholder="Username" autofocus required>
+		        	<?php echo "<p style='color:red; size:12px;'>".$teror."</p>"; ?>
+		            <input type="text" name="username" class="form-control" placeholder="Username" autofocus>
 		            <br>
-		            <input type="password" name="password" class="form-control" placeholder="Password" required>
+		            <input type="password" name="password" class="form-control" placeholder="Password">
 		            <label class="checkbox">
 		                <span class="pull-right">
 		                    <a data-toggle="modal" href="login.html#myModal"> Forgot Password?</a>
@@ -49,17 +51,17 @@
 		            <button class="btn btn-theme btn-block" type="submit" name="lgnbtn"><i class="fa fa-lock"></i> SIGN IN</button>
 		            <hr>
 		            
-		            <div class="login-social-link centered">
+<!-- 		            <div class="login-social-link centered">
 		            <p>or you can sign in via your social network</p>
 		                <button class="btn btn-facebook" type="submit"><i class="fa fa-facebook" name="lgnfb"></i> Facebook</button>
 		                <button class="btn btn-twitter" type="submit" name="lgntwt"><i class="fa fa-twitter"></i> Twitter</button>
 		            </div>
 		            <div class="registration">
 		                Don't have an account yet?<br/>
-		                <a class="" href="<?php echo site_url('login/register'); ?>">
+		                <a class="" href="">
 		                    Create an account
 		                </a>
-		            </div>
+		            </div> -->
 		
 		        </div>
 		
