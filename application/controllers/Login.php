@@ -32,10 +32,10 @@ class Login extends CI_Controller {
 				$this->load->view('pages/login', $data);
 			}
 			else if ($this->session->userdata('tipe_user') == 1){
-				redirect('admin/'.$this->session->userdata('id_user'));
+				redirect('admin?id='.$this->session->userdata('id_user'));
 			}
 			else {
-				redirect('siswa/'.$this->session->userdata('id_user'));
+				redirect('siswa?id='.$this->session->userdata('id_user'));
 			}
 	}
 
@@ -54,10 +54,10 @@ class Login extends CI_Controller {
 				$this->session->set_userdata('tipe_user', $q['type_user']);
 				$this->session->set_userdata('id_user', $q['id_user']);
 				if($q['type_user'] == 1){
-					redirect('admin/'.$q['id_user']);
+					redirect('admin?id='.$q['id_user']);
 				}
 				else if($q['type_user'] == 0){
-					redirect('siswa/'.$q['id_user']);
+					redirect('siswa?id='.$q['id_user']);
 				}
 				else {
 					echo "<script>alert('Access Denied!')</script>";

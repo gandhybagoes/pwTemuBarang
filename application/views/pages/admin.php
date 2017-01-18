@@ -7,7 +7,7 @@
     <meta name="author" content="Dashboard">
     <meta name="keyword" content="Dashboard, Bootstrap, Admin, Template, Theme, Responsive, Fluid, Retina">
 
-    <title>DASHGUM - FREE Bootstrap Admin Template</title>
+    <title>Admin Dashboard</title>
 
     <!-- Bootstrap core CSS -->
     <link href="<?php echo base_url(); ?>/assets/css/bootstrap.css" rel="stylesheet">
@@ -42,7 +42,7 @@
                   <div class="fa fa-bars tooltips" data-placement="right" data-original-title="Toggle Navigation"></div>
               </div>
             <!--logo start-->
-            <a href="index.html" class="logo"><b>DASHGUM FREE</b></a>
+            <a href="index.html" class="logo"><b>TemuBarang</b></a>
             <!--logo end-->
             <div class="nav notify-row" id="top_menu">
                 <!--  notification start -->
@@ -61,7 +61,7 @@
                             <li>
                                 <a href="index.html#">
                                     <div class="task-info">
-                                        <div class="desc">DashGum Admin Panel</div>
+                                        <div class="desc">TemuBarang Admin</div>
                                         <div class="percent">40%</div>
                                     </div>
                                     <div class="progress progress-striped">
@@ -202,7 +202,7 @@
               <ul class="sidebar-menu" id="nav-accordion">
               
               	  <p class="centered"><a href="profile.html"><img src="<?php echo base_url(); ?>/assets/img/ui-sam.jpg" class="img-circle" width="60"></a></p>
-              	  <h5 class="centered">Marcel Newman</h5>
+              	  <h5 class="centered"><?php echo $profile['0']['nama_user']; ?></h5>
               	  	
                   <li class="mt">
                       <a class="active" href="index.html">
@@ -214,24 +214,23 @@
                   <li class="sub-menu">
                       <a href="javascript:;" >
                           <i class="fa fa-desktop"></i>
-                          <span>UI Elements</span>
+                          <span>Data</span>
                       </a>
                       <ul class="sub">
-                          <li><a  href="general.html">General</a></li>
-                          <li><a  href="buttons.html">Buttons</a></li>
-                          <li><a  href="panels.html">Panels</a></li>
+                          <li><a  href="general.html">List Users</a></li>
+                          <li><a  href="general.html">List Barang</a></li>
                       </ul>
                   </li>
 
                   <li class="sub-menu">
                       <a href="javascript:;" >
                           <i class="fa fa-cogs"></i>
-                          <span>Components</span>
+                          <span>Logs</span>
                       </a>
                       <ul class="sub">
-                          <li><a  href="calendar.html">Calendar</a></li>
-                          <li><a  href="gallery.html">Gallery</a></li>
-                          <li><a  href="todo_list.html">Todo List</a></li>
+                          <li><a  href="calendar.html">List Pengambilan</a></li>
+                          <li><a  href="gallery.html">List Penemuan</a></li>
+                          <li><a  href="todo_list.html">History</a></li>
                       </ul>
                   </li>
                   <li class="sub-menu">
@@ -690,9 +689,9 @@
         $(document).ready(function () {
         var unique_id = $.gritter.add({
             // (string | mandatory) the heading of the notification
-            title: 'Welcome to Dashgum!',
+            title: 'Welcome Admin!',
             // (string | mandatory) the text inside the notification
-            text: 'Hover me to enable the Close Button. You can hide the left sidebar clicking on the button next to the logo. Free version for <a href="http://blacktie.co" target="_blank" style="color:#ffd777">BlackTie.co</a>.',
+            text: 'You can edit and add everything in the admin section!.',
             // (string | optional) the image to display on the left
             image: '<?php echo base_url(); ?>/assets/img/ui-sam.jpg',
             // (bool | optional) if you want it to fade out on its own or just sit there
