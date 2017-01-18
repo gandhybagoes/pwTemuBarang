@@ -36,7 +36,7 @@
 	  	<div class="container">
 	  	
 		      <form class="form-login" action="<?php echo site_url('login/kliklogin'); ?>" method="post">
-		        <h2 class="form-login-heading">sign in now</h2>
+		        <h2 class="form-login-heading">sign in</h2>
 		        <div class="login-wrap">
 		        	<?php echo "<p style='color:red; size:12px;'>".$teror."</p>"; ?>
 		            <input type="text" name="username" class="form-control" placeholder="Username" autofocus>
@@ -100,7 +100,7 @@
     <!-- You can use an image of whatever size. This script will stretch to fit in any screen size.-->
     <script type="text/javascript" src="<?php echo base_url(); ?>/assets/js/jquery.backstretch.min.js"></script>
     <script>
-        $.backstretch("<?php echo base_url(); ?>/assets/img/login-bg.jpg", {speed: 500});
+        $.backstretch("<?php echo base_url(); ?>/assets/img/desk.jpeg", {speed: 500});
     </script>
 
 
