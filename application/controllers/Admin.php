@@ -7,6 +7,7 @@ class Admin extends CI_Controller {
 			parent::__construct();
 			$this->load->library('session');
 			$this->load->helper('array');
+			$this->load->model('modelmu');
 		}
 
 	public function index()
@@ -23,7 +24,8 @@ class Admin extends CI_Controller {
 					$q = $this->modelmu->select($data, 'profile');
 					$data['profile'] = array($q);
 					// print_r($data['profile']);
-					$this->load->view('pages/admin', $data);
+					$data['content'] = $this->load->view('pages/content/admin', '' , TRUE);
+					$this->load->view('pages/base', $data);
 				}
 		}
 		else {
@@ -32,8 +34,10 @@ class Admin extends CI_Controller {
 		
 	}
 
-	public function kliklogin()
+	public function listBarang()
 	{
-		
+		$dota['listbrg'] = $this->modelmu->selectAll('barang');
+		$data['content'] = $this->load->view('pages/content/list_barang', $dota , TRUE);
+		$this->load->view("pages/base", $data);
 	}
 }

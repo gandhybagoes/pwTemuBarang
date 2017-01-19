@@ -14,6 +14,14 @@ class Modelmu extends CI_Model {
                 return $query->row_array();
         }
 
+        public function selectAll($table)
+        {
+                $query = $this->db->select('*')
+                         ->from($table)
+                         ->get();
+                return $query->result_array();
+        }
+
         public function insert_entry()
         {
                 $this->title    = $_POST['title']; // please read the below note

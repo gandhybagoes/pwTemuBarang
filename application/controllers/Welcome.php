@@ -27,4 +27,9 @@ class Welcome extends CI_Controller {
 	{
 		$this->load->view('chat/chat');
 	}
+
+		public function chat2()
+	{
+		$this->load->view('chat/chat2');
+	}
 }
