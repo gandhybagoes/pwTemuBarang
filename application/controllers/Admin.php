@@ -40,4 +40,8 @@ class Admin extends CI_Controller {
 		$data['content'] = $this->load->view('pages/content/list_barang', $dota , TRUE);
 		$this->load->view("pages/base", $data);
 	}
+
+	function coba(){
+		$this->load->view('pages/content/list_barang');
+	}
 }
