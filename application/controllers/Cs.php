@@ -44,6 +44,59 @@ class Cs extends CI_Controller
 		else {
 			redirect('login');
 		}
+
+		$url = $this->do_upload();
+		//$foto = $this->input->post('pic');
+		$id = $this->input->post('id');
+		$nama = $this->input->post('nama');
+		$username = $this->input->post('username');
+		$nomortlp = $this->input->post('nomortlp');
+		//$foto = $this->input->post('gantifoto');
+		$id_user = $this->input->post('iduser');
+		$kosong = "";
+
+		$profile = $this->session->userdata('profile');
+		if($url == null){
+			$url = $profile['0']['foto_user'];
+		}
+		/*else{
+			$foto = $url;
+		}*/
+
+		$data = array(
+			'nama_user' => $nama,
+			'username_user' => $username,
+			'notelp_user' => $nomortlp,
+			'foto_user' => $url,
+			'kelas_user' => $kosong,
+			'noabsen_user' => $kosong,
+			'id_user' => $id_user
+			);
+		$where = array('id_profile' => $id);
+
+		$this->modelmu->updatedata($where,$data,'profile');
+		redirect('cs');
+	}
+
+	function do_upload(){
+    	 $type = explode('.', $_FILES["pic"]["name"]);
+    	$type = $type[count($type)-1];
+    	$url = uniqid(rand()).'.'.$type;
+    	if(in_array($type, array("jpg","jpeg","gif","png")))
+    		if(is_uploaded_file($_FILES["pic"]["tmp_name"]))
+    			if(move_uploaded_file($_FILES["pic"]["tmp_name"],"./assets/img/pp/".$url))
+    				return $url;
+    	return "";
+    }
+
+	function tampiledit(){
+		if($this->session->userdata('tipe_user') == 2){
+		$data['content'] = $this->load->view('pages/content/cs/edit_profile', '' , TRUE);
+		$this->load->view('pages/baseCS', $data);
+		}
+		else {
+			redirect('login');
+		}
 	}
 }
  ?>

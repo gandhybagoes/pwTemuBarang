@@ -200,9 +200,13 @@
                 <ul class="sidebar-menu" id="nav-accordion">
 
                     <p class="centered">
-                        <a href="profile.html"><img src="<?php echo base_url();?>assets/img/profile-01.jpg" class="img-circle" width="60" height="60"></a>
+                        <a href="profile.html"><img src="<?php echo base_url();?>assets/img/pp/<?php 
+                  $profile = $this->session->userdata('profile');
+                  echo $profile['0']['foto_user']; ?>" class="img-circle" width="60" height="60"></a>
                     </p>
-                    <h5 class="centered">Marcel Newman</h5>
+                    <h5 class="centered"><?php 
+                  $profile = $this->session->userdata('profile');
+                  echo $profile['0']['nama_user']; ?></h5>
 
                     <!-- <li class="mt">
                         <a href="index.html">
@@ -224,7 +228,7 @@
                     </li> -->
 
                     <li class="sub-menu">
-                        <a href="<?php echo base_url();?>cs/editprof">
+                        <a href="<?php echo base_url();?>cs/tampiledit">
                             <i class="fa fa-cogs"></i>
                             <span>Edit Profile</span>
                         </a>

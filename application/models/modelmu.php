@@ -49,4 +49,9 @@ class Modelmu extends CI_Model {
                 $this->db->update('entries', $this, array('id' => $_POST['id']));
         }
 
+        function updatedata($where,$data,$table){
+        $this->db->where($where);
+        $this->db->update($table,$data);
+    }
+
 }

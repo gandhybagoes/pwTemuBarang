@@ -62,9 +62,6 @@ class Login extends CI_Controller {
 				else if($q['type_user'] == 0){
 					redirect('siswa?id='.$q['id_user']);
 				}
-				else if($q['type_user']==2){
-					redirect('cs?id='.$q['id_user']);
-				}
 				else {
 					echo "<script>alert('Access Denied!')</script>";
 					redirect('login?err=ad');
