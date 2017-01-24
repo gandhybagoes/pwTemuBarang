@@ -22,7 +22,8 @@ class Admin extends CI_Controller {
 				}
 				else{
 					$q = $this->modelmu->select($data, 'profile');
-					$data['profile'] = array($q);
+					$this->session->set_userdata('profile', array($q));
+					// $data['profile'] = array($q);
 					// print_r($data['profile']);
 					$data['content'] = $this->load->view('pages/content/admin', '' , TRUE);
 					$this->load->view('pages/base', $data);
@@ -36,7 +37,7 @@ class Admin extends CI_Controller {
 
 	public function listBarang()
 	{
-		$dota['listbrg'] = $this->modelmu->selectAll('barang');
+		$dota['listbrg'] = $this->modelmu->selectStatus();
 		$data['content'] = $this->load->view('pages/content/list_barang', $dota , TRUE);
 		$this->load->view("pages/base", $data);
 	}

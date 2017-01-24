@@ -23,20 +23,34 @@
                               </thead>
                               <tbody>
                               <?php 
-                              // print_r($listbrg);
+                              //print_r($listbrg);
                               foreach($listbrg as $a) { ?>
                               <tr>
                                   <td><a href="basic_table.html#"><?php echo $a['nama_barang']; ?></a></td>
                                   <td class="hidden-phone"><?php echo $a['jenis_barang']; ?></td>
                                   <td><?php echo $a['lokasi_barang']; ?></td>
-                                   <td><?php echo $a['status_barang']; ?></td>
+                                   <?php echo $a['code_status']; ?>
                                     <td><?php echo $a['foto_barang']; ?></td>
                                   <!-- <td><span class="label label-info label-mini">Due</span></td> GET DARI DATABASE?? -->
-                                  <td>
-                                      <button class="btn btn-success btn-xs"><i class="fa fa-check"></i></button>
+                                  <?php if(($a['confirmA'] == 1 && $profile['0']['username_user'] == "Suko") || ($a['confirmB'] == 1 && $profile['0']['username_user'] == "Emil")) {
+                                    ?>
+                                      <td>
+                                      <button class="btn btn-success btn-xs" disabled><i class="fa fa-check"></i></button>
                                       <button class="btn btn-primary btn-xs"><i class="fa fa-pencil"></i></button>
                                       <button class="btn btn-danger btn-xs"><i class="fa fa-trash-o "></i></button>
-                                  </td>
+                                      </td> 
+                                    <?php } else if($a['confirmA'] == 1 && $a['confirmB'] == 1) { ?>
+                                      <td>
+                                      <button class="btn btn-primary btn-xs"><i class="fa fa-pencil"></i></button>
+                                      <button class="btn btn-danger btn-xs"><i class="fa fa-trash-o "></i></button>
+                                      </td> 
+                                      <?php } else{?>
+                                       <td>
+                                          <button class="btn btn-success btn-xs"><i class="fa fa-check"></i></button>
+                                          <button class="btn btn-primary btn-xs"><i class="fa fa-pencil"></i></button>
+                                          <button class="btn btn-danger btn-xs"><i class="fa fa-trash-o "></i></button>
+                                      </td> 
+                                  <?php } ?>
                               </tr>
                               <?php } ?>
                               </tbody>
