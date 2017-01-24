@@ -7,12 +7,13 @@
                       <div class="content-panel">
                           <table class="table table-striped table-advance table-hover" id="listbrg">
 	                  	  	 <!--  <h4><i class="fa fa-angle-right"></i> Advanced Table</h4> -->
-                           <button class="btn btn-success"><i class="fa fa-plus"></i> Tambah</button>
+                           <a href="<?= base_url('admin/tambah_barang') ?>"><button class="btn btn-success"><i class="fa fa-plus"></i> Tambah</button></a>
 	                  	  	  <hr>
                               <thead>
                               <tr>
                                   <th><i class="fa fa-bullhorn"></i> Name</th>
                                   <th class="hidden-phone"><i class="fa fa-question-circle"></i> Jenis</th>
+                                  <th class="hidden-phone"><i class="fa fa-question-circle"></i> Keterangan</th>
                                   <th><i class="fa fa-bookmark"></i> Lokasi</th>
                                   <th><i class=" fa fa-edit"></i> Status</th>
                                   <th><i class=" fa fa-edit"></i> Foto</th>
@@ -26,29 +27,30 @@
                               //print_r($listbrg);
                               foreach($listbrg as $a) { ?>
                               <tr>
-                                  <td><a href="basic_table.html#"><?php echo $a['nama_barang']; ?></a></td>
-                                  <td class="hidden-phone"><?php echo $a['jenis_barang']; ?></td>
-                                  <td><?php echo $a['lokasi_barang']; ?></td>
-                                   <?php echo $a['code_status']; ?>
-                                    <td><?php echo $a['foto_barang']; ?></td>
+                                  <td><a href="basic_table.html#"><?= $a['nama_barang']; ?></a></td>
+                                  <td class="hidden-phone"><?= $a['jenis_barang']; ?></td>
+                                  <td class="hidden-phone"><?= $a['ket_barang']; ?></td>
+                                  <td><?= $a['lokasi_barang']; ?></td>
+                                   <?= $a['code_status']; ?>
+                                    <td><?= $a['foto_barang']; ?></td>
                                   <!-- <td><span class="label label-info label-mini">Due</span></td> GET DARI DATABASE?? -->
                                   <?php if(($a['confirmA'] == 1 && $profile['0']['username_user'] == "Suko") || ($a['confirmB'] == 1 && $profile['0']['username_user'] == "Emil")) {
                                     ?>
                                       <td>
                                       <button class="btn btn-success btn-xs" disabled><i class="fa fa-check"></i></button>
-                                      <button class="btn btn-primary btn-xs"><i class="fa fa-pencil"></i></button>
-                                      <button class="btn btn-danger btn-xs"><i class="fa fa-trash-o "></i></button>
+                                      <a href="<?= base_url('admin/edit_barang?id_brg='); echo $a['id_barang']; ?>"><button class="btn btn-primary btn-xs"><i class="fa fa-pencil"></i></button></a>
+                                      <a href="<?= base_url('admin/hapus_barang?id_brg='); echo $a['id_barang']; ?>"><button class="btn btn-danger btn-xs"><i class="fa fa-trash-o "></i></button></a>
                                       </td> 
                                     <?php } else if($a['confirmA'] == 1 && $a['confirmB'] == 1) { ?>
                                       <td>
-                                      <button class="btn btn-primary btn-xs"><i class="fa fa-pencil"></i></button>
-                                      <button class="btn btn-danger btn-xs"><i class="fa fa-trash-o "></i></button>
-                                      </td> 
+                                      <a href="<?= base_url('admin/edit_barang?id_brg='); echo $a['id_barang']; ?>"><button class="btn btn-primary btn-xs"><i class="fa fa-pencil"></i></button></a>
+                                      <a href="<?= base_url('admin/hapus_barang?id_brg='); echo $a['id_barang']; ?>"><button class="btn btn-danger btn-xs"><i class="fa fa-trash-o "></i></button>
+                                      </td></a>
                                       <?php } else{?>
                                        <td>
                                           <button class="btn btn-success btn-xs"><i class="fa fa-check"></i></button>
-                                          <button class="btn btn-primary btn-xs"><i class="fa fa-pencil"></i></button>
-                                          <button class="btn btn-danger btn-xs"><i class="fa fa-trash-o "></i></button>
+                                          <a href="<?= base_url('admin/edit_barang?id_brg='); echo $a['id_barang']; ?>"><button class="btn btn-primary btn-xs"><i class="fa fa-pencil"></i></button></a>
+                                          <a href="<?= base_url('admin/hapus_barang?id_brg='); echo $a['id_barang']; ?>"><button class="btn btn-danger btn-xs"><i class="fa fa-trash-o "></i></button></a>
                                       </td> 
                                   <?php } ?>
                               </tr>

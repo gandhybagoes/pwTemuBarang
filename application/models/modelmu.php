@@ -24,20 +24,16 @@ class Modelmu extends CI_Model {
 
         public function selectStatus()
         {
-            $query = $this->db->select('barang.id_status, barang.nama_barang, barang.jenis_barang, barang.lokasi_barang, barang.foto_barang, barang.confirmA, barang.confirmB, status.code_status')
+            $query = $this->db->select('barang.id_barang, barang.nama_barang, barang.ket_barang, barang.jenis_barang, barang.lokasi_barang, barang.foto_barang, barang.confirmA, barang.confirmB, status.code_status')
                     ->from('barang')
                     ->join('status', 'barang.id_status = status.id_status', 'inner')
                     ->get();
             return $query->result_array();
         }
 
-        public function insert_entry()
+        public function insert_entry($table, $content)
         {
-                $this->title    = $_POST['title']; // please read the below note
-                $this->content  = $_POST['content'];
-                $this->date     = time();
-
-                $this->db->insert('entries', $this);
+                return $this->db->insert($table, $content);
         }
 
         public function update_entry()
