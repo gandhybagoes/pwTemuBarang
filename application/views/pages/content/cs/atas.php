@@ -40,7 +40,7 @@
                 <div class="fa fa-bars tooltips" data-placement="right" data-original-title="Toggle Navigation"></div>
             </div>
             <!--logo start-->
-            <a href="index.html" class="logo"><b>TEMU BARANG</b></a>
+            <a href="#" class="logo"><b>TEMU BARANG</b></a>
             <!--logo end-->
             <div class="nav notify-row" id="top_menu">
                 <!--  notification start -->
@@ -224,7 +224,7 @@
                     </li> -->
 
                     <li class="sub-menu">
-                        <a href="#">
+                        <a href="<?php echo base_url();?>cs/editprof">
                             <i class="fa fa-cogs"></i>
                             <span>Edit Profile</span>
                         </a>
@@ -235,7 +235,7 @@
                         </ul> -->
                     </li> 
                     <li class="sub-menu">
-                        <a href="#">
+                        <a href="<?php echo base_url();?>cs">
                             <i class="fa fa-book"></i>
                             <span>Tambah Data</span>
                         </a>

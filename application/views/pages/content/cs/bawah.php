@@ -2,9 +2,9 @@
         <footer class="site-footer">
             <div class="text-center">
                 2017 - Kelompok 1 - SMK Telkom Malang
-                <a href="" class="go-top">
+                <!-- <a href="" class="go-top">
                     <i class="fa fa-angle-up"></i>
-                </a>
+                </a> -->
             </div>
         </footer>
         <!--footer end-->
