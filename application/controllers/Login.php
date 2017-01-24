@@ -34,6 +34,9 @@ class Login extends CI_Controller {
 			else if ($this->session->userdata('tipe_user') == 1){
 				redirect('admin?id='.$this->session->userdata('id_user'));
 			}
+			else if ($this->session->userdata('tipe_user') == 2){
+				redirect('cs?id='.$this->session->userdata('id_user'));
+			}
 			else {
 				redirect('siswa?id='.$this->session->userdata('id_user'));
 			}
