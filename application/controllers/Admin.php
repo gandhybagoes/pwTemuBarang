@@ -84,4 +84,17 @@ class Admin extends CI_Controller {
 		}
 	}
 
+	public function kliktambah(){
+		$nm_brg = $this->input->get('add');
+		$stts = $this->input->get('status');
+		$nama;
+
+	}
+
+	public function chatpage(){
+		$data['content'] = $this->load->view('chat/chat3', '', TRUE);
+		$this->load->view('pages/base', $data);
+	}
+
+
 }
