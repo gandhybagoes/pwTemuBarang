@@ -10,15 +10,15 @@
                             <form method="post" action="<?= ($judul=="Tambah Barang")?base_url('admin/kliktambah'):base_url('admin/klikedit') ?>">
                                 <div class="form-group">
                                     <label for="exampleInputEmail1">Nama Barang</label>
-                                    <input type="text" class="form-control" id="namabarang" aria-describedby="emailHelp" placeholder="Masukkan Nama Barang" value="<?= isset($isine)?$isine['0']['nama_barang']:"" ?>" />
+                                    <input type="text" class="form-control" id="namabarang" aria-describedby="emailHelp" placeholder="Masukkan Nama Barang" name="nama_barang" value="<?= isset($isine)?$isine['0']['nama_barang']:"" ?>" />
                                 </div>
                                 <div class="form-group">
                                     <label for="exampleTextarea">Keterangan Barang</label>
-                                    <textarea class="form-control" id="keteranganbarang" rows="3" ><?= isset($isine)?$isine['0']['ket_barang']:"" ?></textarea>
+                                    <textarea class="form-control" name="ket_barang" id="keteranganbarang" rows="3" ><?= isset($isine)?$isine['0']['ket_barang']:"" ?></textarea>
                                 </div>
                                 <div class="form-group">
                                     <label for="exampleSelect1">Jenis Barang</label>
-                                    <select class="form-control" id="jenisbarang">
+                                    <select class="form-control" id="jenisbarang" name="jenis_barang">
                                       <option value="<?= isset($isine)?$isine['0']['jenis_barang']:"" ?>" selected><?= isset($isine)?$isine['0']['jenis_barang']:"Pilih Jenis" ?></option>
                                       <option value="charger">Charger</option>
                                       <option value="laptop">Laptop</option>
@@ -29,7 +29,7 @@
                                 </div>
                                 <div class="form-group">
                                     <label for="exampleSelect1">Lokasi Barang</label>
-                                    <select class="form-control" id="lokasibarang">
+                                    <select class="form-control" id="lokasibarang" name="lokasi_barang">
                                       <option value="<?= isset($isine)?$isine['0']['lokasi_barang']:"" ?>"><?= isset($isine)?$isine['0']['lokasi_barang']:"Pilih Lokasi" ?></option>
                                       <option>XII RPL 1</option>
                                       <option>XII RPL 2</option>
@@ -40,7 +40,7 @@
                                 </div>
                                 <div class="form-group">
                                     <label for="exampleInputFile">Gambar Barang</label>
-                                    <input type="file" class="form-control-file" id="gambarbarang" aria-describedby="fileHelp">
+                                    <input type="file" class="form-control-file" id="gambarbarang" aria-describedby="fileHelp" name="">
                                 </div>
                                 <button type="submit" class="btn btn-primary"><?= $judul ?></button>
                             </form>

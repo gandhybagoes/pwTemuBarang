@@ -176,7 +176,7 @@
                                 </a>
                             </li>
                             <li>
-                                <a href="index.html#">See all messages</a>
+                                <a href="<?= base_url('admin/chatpage'); ?>">See all messages</a>
                             </li>
                         </ul>
                     </li>
