@@ -64,4 +64,10 @@ class Modelmu extends CI_Model {
         $this->db->update($table,$datalog);
     }
 
+    function hitungid()
+    {
+        $query = $this->db->query('SELECT COUNT(id_barang) FROM barang');
+        //return $query;
+    }
+
 }

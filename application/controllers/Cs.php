@@ -115,5 +115,61 @@ class Cs extends CI_Controller
 		$data['content'] = $this->load->view('pages/content/cs/edit_profile', $dataprof , TRUE);
 						$this->load->view("pages/baseCS", $data);*/
 	}
+
+	function tambah()
+	{
+		if($this->session->userdata('tipe_user') == 2){
+		$data['content'] = $this->load->view('pages/content/cs/tambah_barang', '' , TRUE);
+		$this->load->view('pages/baseCS', $data);
+		}
+		else {
+			redirect('login');
+		}
+
+		$jenis = $this->input->post('jenisbarang');
+		$idbrg = $jenis."1";
+		$txtjenis = "";
+		if($this->input->post('jenisbarang') == 'crg'){
+			$txtjenis = "Charger";
+		}
+
+		$data = array(
+		$idbrg,
+		$nama = $this->input->post('namabarang'),
+		$keterangan = $this->input->post('keteranganbarang'),
+		$jenis,
+		$lokasi = $this->input->post('lokasibarang'),
+		$foto = $this->do_upload_barang(),
+		$id_status = "st1",
+		$conA = 0,
+		$conB = 0,
+		$txtjenis
+		);
+
+		if($foto == null){
+			echo "
+			<script>
+ 			alert('Ambil Gambar Barang');
+			</script>";
+		}
+		else{
+			echo "
+			<script>
+ 			alert('Data Berhasil Ditambahkan');
+			</script>";
+		print_r($data);
+		}
+	}
+
+	function do_upload_barang(){
+    	 $type = explode('.', $_FILES["pic"]["name"]);
+    	$type = $type[count($type)-1];
+    	$url = uniqid(rand()).'.'.$type;
+    	if(in_array($type, array("jpg","jpeg","gif","png")))
+    		if(is_uploaded_file($_FILES["pic"]["tmp_name"]))
+    			if(move_uploaded_file($_FILES["pic"]["tmp_name"],"./assets/img/brg/".$url))
+    				return $url;
+    	return "";
+    }
 }
  ?>
