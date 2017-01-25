@@ -6,7 +6,7 @@
                 <div class="row mt">
                     <div class="col-lg-12">
                         <div class="form-panel">
-                            <h3 class="mb"><i class="fa fa-angle-right"></i><?php echo $judul; ?></h3>
+                            <h3 class="mb"><i class="fa fa-angle-right"></i>Tambah Barang</h3>
                             <form>
                                 <div class="form-group">
                                     <label for="exampleInputEmail1">Nama Barang</label>

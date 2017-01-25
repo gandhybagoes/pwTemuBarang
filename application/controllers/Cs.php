@@ -53,6 +53,8 @@ class Cs extends CI_Controller
 		$nomortlp = $this->input->post('nomortlp');
 		//$foto = $this->input->post('gantifoto');
 		$id_user = $this->input->post('iduser');
+		$password = $this->input->post('password');
+		$typeuser = $this->input->post('typeuser');
 		$kosong = "";
 
 		$profile = $this->session->userdata('profile');
@@ -74,7 +76,15 @@ class Cs extends CI_Controller
 			);
 		$where = array('id_profile' => $id);
 
+		$datalog = array(
+			'nama_user' => $username,
+			'password_user' => $password,
+			'type_user' => $typeuser,
+			);
+		$dimana = array('id_user' => $id_user);
+
 		$this->modelmu->updatedata($where,$data,'profile');
+		$this->modelmu->updatedatalog($dimana,$datalog,'login');
 		redirect('cs');
 	}
 
@@ -91,12 +101,19 @@ class Cs extends CI_Controller
 
 	function tampiledit(){
 		if($this->session->userdata('tipe_user') == 2){
-		$data['content'] = $this->load->view('pages/content/cs/edit_profile', '' , TRUE);
+		$where = array ('profile.id_user' => $this->session->userdata('id_user'),
+						);
+		$dataprof['dtprof'] = $this->modelmu->ambilpass($where);
+		$data['content'] = $this->load->view('pages/content/cs/edit_profile', $dataprof , TRUE);
 		$this->load->view('pages/baseCS', $data);
 		}
 		else {
 			redirect('login');
 		}
+
+		/*$dataprof['dtprof'] = $this->modelmu->ambilpass();
+		$data['content'] = $this->load->view('pages/content/cs/edit_profile', $dataprof , TRUE);
+						$this->load->view("pages/baseCS", $data);*/
 	}
 }
  ?>

@@ -100,7 +100,7 @@
     <!-- You can use an image of whatever size. This script will stretch to fit in any screen size.-->
     <script type="text/javascript" src="<?php echo base_url(); ?>/assets/js/jquery.backstretch.min.js"></script>
     <script>
-        $.backstretch("<?php echo base_url(); ?>/assets/img/desk.jpeg", {speed: 500});
+        $.backstretch("<?php echo base_url(); ?>/assets/img/artist_desk_w1.jpeg", {speed: 500});
     </script>
 
 
