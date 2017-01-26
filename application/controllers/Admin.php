@@ -91,10 +91,6 @@ class Admin extends CI_Controller {
 
 	}
 
-	public function chatpage(){
-		$data['content'] = $this->load->view('chat/chat3', '', TRUE);
-		$this->load->view('pages/base', $data);
-	}
 
 
 }
