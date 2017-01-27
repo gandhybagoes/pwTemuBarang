@@ -200,7 +200,7 @@
                 <ul class="sidebar-menu" id="nav-accordion">
 
                     <p class="centered">
-                        <a href="profile.html"><img src="<?php echo base_url();?>assets/img/pp/<?php 
+                        <a href="profile.html"><img src="<?php echo base_url('assets/img/pp/ ');
                   $profile = $this->session->userdata('profile');
                   echo $profile['0']['foto_user']; ?>" class="img-circle" width="60" height="60"></a>
                     </p>

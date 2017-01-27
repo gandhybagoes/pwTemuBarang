@@ -118,47 +118,51 @@ class Cs extends CI_Controller
 
 	function tambah()
 	{
-		if($this->session->userdata('tipe_user') == 2){
-		$data['content'] = $this->load->view('pages/content/cs/tambah_barang', '' , TRUE);
-		$this->load->view('pages/baseCS', $data);
+		if($this->session->userdata('tipe_user') != 2){
+		redirect('login');
 		}
 		else {
-			redirect('login');
+			$jenis = $this->input->post('jenisbarang');
+			$last_id = $this->modelmu->hitungid($jenis);
+			$idbrg = $jenis.($last_id+1);
+			$txtjenis = "";
+			if($this->input->post('jenisbarang') == 'crg'){
+				$txtjenis = "Charger";
+			}
+			$nama = $this->input->post('namabarang'),
+			$keterangan = $this->input->post('keteranganbarang'),
+			$lokasi = $this->input->post('lokasibarang'),
+			$foto = $this->do_upload_barang(),
+			$id_status = "st1",
+			$conA = 0,
+			$conB = 0,
+
+			if($foto == null){
+				echo "
+				<script>
+	 			alert('Ambil Gambar Barang');
+				</script>";
+			}
+			else{
+			$data = array(
+					'id_barang' => $idbrg,
+					'nama_barang' => $nama,
+					'ket_barang' => $keterangan,
+					'jenis_barang' => $jenis,
+					'lokasi_barang' => $lokasi,
+					'foto_barang' => $foto,
+					'id_status' => $id_status,
+					'confirmA' => $conA,
+					'confirmB' => $conB
+ 			);
+				echo "
+				<script>
+	 			alert('Data Berhasil Ditambahkan');
+				</script>";
+			}
 		}
 
-		$jenis = $this->input->post('jenisbarang');
-		$idbrg = $jenis."1";
-		$txtjenis = "";
-		if($this->input->post('jenisbarang') == 'crg'){
-			$txtjenis = "Charger";
-		}
-
-		$data = array(
-		$idbrg,
-		$nama = $this->input->post('namabarang'),
-		$keterangan = $this->input->post('keteranganbarang'),
-		$jenis,
-		$lokasi = $this->input->post('lokasibarang'),
-		$foto = $this->do_upload_barang(),
-		$id_status = "st1",
-		$conA = 0,
-		$conB = 0,
-		$txtjenis
-		);
-
-		if($foto == null){
-			echo "
-			<script>
- 			alert('Ambil Gambar Barang');
-			</script>";
-		}
-		else{
-			echo "
-			<script>
- 			alert('Data Berhasil Ditambahkan');
-			</script>";
-		print_r($data);
-		}
+		
 	}
 
 	function do_upload_barang(){
