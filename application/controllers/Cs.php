@@ -155,6 +155,8 @@ class Cs extends CI_Controller
 					'confirmA' => $conA,
 					'confirmB' => $conB
  			);
+ 			$this->modelmu->insert_entry('barang', $data);
+ 			
 				echo "
 				<script>
 	 			alert('Data Berhasil Ditambahkan');

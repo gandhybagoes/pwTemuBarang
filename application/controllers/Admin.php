@@ -35,6 +35,8 @@ class Admin extends CI_Controller {
 		
 	}
 
+	
+
 	public function listBarang()
 	{
 		 		if($this->session->userdata('id_user') != null && $this->session->userdata('tipe_user') == 1){
@@ -90,6 +92,20 @@ class Admin extends CI_Controller {
 		$nama;
 
 	}
+
+	public function confirmTake($id){
+		$profile = $this->session->userdata('profile');
+		$nama_usr = $profile['0']['nama_user'];
+		if(strpos($nama_usr, 'emil') !== false){
+			//jika nama mengandung emil
+			$data = array('confirmA' => '1');
+			$this->modelmu->updatedata('barang', $data, array('id_barang' => $id));
+		}
+		else if(strpos($nama_usr, 'emil') !== false)
+			//jika nama mengandung suko
+			$data = array('confirmB' => '1');
+			$this->modelmu->updatedata('barang', $data, array('id_barang' => $id));
+			} //confirmTake untuk konfirmasi ambil barang
 
 
 

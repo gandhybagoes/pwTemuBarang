@@ -45,18 +45,8 @@ class Modelmu extends CI_Model {
                 return $this->db->insert($table, $content);
         }
 
-        public function update_entry()
-        {
-                $this->title    = $_POST['title'];
-                $this->content  = $_POST['content'];
-                $this->date     = time();
-
-                $this->db->update('entries', $this, array('id' => $_POST['id']));
-        }
-
         function updatedata($where,$data,$table){
-        $this->db->where($where);
-        $this->db->update($table,$data);
+        $this->db->update($table,$data, $where);
     }
 
     function updatedatalog($dimana,$datalog,$table){
