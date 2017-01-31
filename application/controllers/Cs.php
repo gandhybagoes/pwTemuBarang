@@ -118,53 +118,105 @@ class Cs extends CI_Controller
 
 	function tambah()
 	{
-		if($this->session->userdata('tipe_user') != 2){
-		redirect('login');
+		if($this->session->userdata('tipe_user') == 2){
+		$data['content'] = $this->load->view('pages/content/cs/tambah_barang', '' , TRUE);
+		$this->load->view('pages/baseCS', $data);
 		}
 		else {
-			$jenis = $this->input->post('jenisbarang');
-			$last_id = $this->modelmu->hitungid($jenis);
-			$idbrg = $jenis.($last_id+1);
-			$txtjenis = "";
-			if($this->input->post('jenisbarang') == 'crg'){
-				$txtjenis = "Charger";
-			}
-			$nama = $this->input->post('namabarang'),
-			$keterangan = $this->input->post('keteranganbarang'),
-			$lokasi = $this->input->post('lokasibarang'),
-			$foto = $this->do_upload_barang(),
-			$id_status = "st1",
-			$conA = 0,
-			$conB = 0,
-
-			if($foto == null){
-				echo "
-				<script>
-	 			alert('Ambil Gambar Barang');
-				</script>";
-			}
-			else{
-			$data = array(
-					'id_barang' => $idbrg,
-					'nama_barang' => $nama,
-					'ket_barang' => $keterangan,
-					'jenis_barang' => $jenis,
-					'lokasi_barang' => $lokasi,
-					'foto_barang' => $foto,
-					'id_status' => $id_status,
-					'confirmA' => $conA,
-					'confirmB' => $conB
- 			);
- 			$this->modelmu->insert_entry('barang', $data);
- 			
-				echo "
-				<script>
-	 			alert('Data Berhasil Ditambahkan');
-				</script>";
-			}
+			redirect('login');
 		}
 
-		
+		/*id_barang*/
+		$jenis = $this->input->post('jenisbarang');
+		$last_id = $this->modelmu->hitungid($jenis);
+		$idbrg = $jenis.($last_id+1);
+		/*id_barang end*/
+
+		/*nama_barang*/
+		$nama = $this->input->post('namabarang');
+		/*nama_barang end*/
+
+		/*ket_barang*/
+		$keterangan = $this->input->post('keteranganbarang');
+		/*ket_barang end*/
+
+		/*jenis_barang*/
+		$txtjenis = "";
+		if($this->input->post('jenisbarang') == 'crg'){
+			$txtjenis = "Charger";
+		}
+		elseif ($this->input->post('jenisbarang') == 'lpt') {
+			$txtjenis = "Laptop";
+		}
+		elseif ($this->input->post('jenisbarang') == 'hp') {
+			$txtjenis = "HP";
+		}
+		elseif ($this->input->post('jenisbarang') == 'kci') {
+			$txtjenis = "Kunci";
+		}
+		elseif ($this->input->post('jenisbarang') == 'spd') {
+			$txtjenis = "Sepeda";
+		}
+		elseif ($this->input->post('jenisbarang') == 'fd') {
+			$txtjenis = "Flash Disk";
+		}
+		elseif ($this->input->post('jenisbarang') == 'hdd') {
+			$txtjenis = "Hard Disk";
+		}
+		elseif ($this->input->post('jenisbarang') == 'dmpt') {
+			$txtjenis = "Dompet";
+		}
+		elseif ($this->input->post('jenisbarang') == 'prhsn') {
+			$txtjenis = "Perhiasan";
+		}
+		elseif ($this->input->post('jenisbarang') == 'dll') {
+			$txtjenis = "Lain-lain";
+		}
+		else{
+			$txtjenis = "Kosong";
+		}
+		/*jenis_barang end*/
+
+		/*lokasi_barang*/
+		$lokasi = $this->input->post('lokasibarang');
+		/*lokasi_barang end*/
+
+		/*foto_barang*/
+		$foto = $this->do_upload_barang();
+		/*foto_barang end*/
+
+		/*id_status*/
+		$id_status = "st1";
+		/*confirmA*/
+		$conA = 0;
+		/*confirmB*/
+		$conB = 0;
+		$data = array(
+		'id_barang' => $idbrg,
+		'nama_barang' => $nama,
+		'ket_barang' => $keterangan,
+		'jenis_barang' => $txtjenis,
+		'lokasi_barang' => $lokasi,
+		'foto_barang' => $foto,
+		'id_status' => $id_status,
+		'confirmA' => $conA,
+		'confirmB' => $conB
+		);
+
+		if($foto == null){
+			echo "
+			<script>
+ 			alert('Ambil Gambar Barang');
+			</script>";
+		}
+		else{
+		$this->modelmu->inputbarang($data, 'barang');
+		redirect('cs');
+		echo "
+			<script>
+ 			alert('Data Berhasil Ditambahkan');
+			</script>";
+		}
 	}
 
 	function do_upload_barang(){
