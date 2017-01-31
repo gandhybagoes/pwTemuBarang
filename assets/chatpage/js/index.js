@@ -55,16 +55,16 @@
     },
     
     addMessage: function() {
-            $.ajax({
-              type: "POST",
-              url: "http://localhost/pwTemuBarang/chat/send",
-              data: { chat_msg: $('#message-to-send').val()},
-              success: function(data){
+            // $.ajax({
+            //   type: "POST",
+            //   url: "http://localhost/pwTemuBarang/chat/send",
+            //   data: { chat_msg: $('#message-to-send').val()},
+            //   success: function(data){
                  this.messageToSend = this.$textarea.val()
                  this.render(); 
-              },
-              error: {console.log('error');}
-            });
+            //   },
+            //   error: {console.log('error');}
+            // });
       // this.messageToSend = this.$textarea.val()
              
     },

@@ -158,9 +158,9 @@ class Cs extends CI_Controller
  			$this->modelmu->insert_entry('barang', $data);
  			
 				echo "
-				<script>
-	 			alert('Data Berhasil Ditambahkan');
-				</script>";
+				<script type='text/javascript'>MyFunction();</script>
+
+				<div id='snackbar'>Data Added</div>";
 			}
 		}
 

@@ -23,8 +23,6 @@ class Admin extends CI_Controller {
 				else{
 					$q = $this->modelmu->select($data, 'profile');
 					$this->session->set_userdata('profile', array($q));
-					// $data['profile'] = array($q);
-					// print_r($data['profile']);
 					$data['content'] = $this->load->view('pages/content/admin', '' , TRUE);
 					$this->load->view('pages/base', $data);
 				}
@@ -40,18 +38,21 @@ class Admin extends CI_Controller {
 	public function listBarang()
 	{
 		 		if($this->session->userdata('id_user') != null && $this->session->userdata('tipe_user') == 1){
-		// 			$id = $this->input->get('id');
-		// 			$this->load->model('modelmu');
-		// 			$data = array('id_user' => $id,);
-		// 			$q = $this->modelmu->select($data, 'login');
-		// 			if($q == null || $q['type_user'] != 1){
-		// 				redirect('login');
-		// 			}
-		// 			else{
 						$dota['listbrg'] = $this->modelmu->selectStatus();
 						$data['content'] = $this->load->view('pages/content/admin/list_barang', $dota , TRUE);
 						$this->load->view("pages/base", $data);
-		// 			}
+		 		}
+		 		else {
+		 		redirect('login?err=ad');
+		 }
+	}
+
+	public function listUser()
+	{
+		 		if($this->session->userdata('id_user') != null && $this->session->userdata('tipe_user') == 1){
+						$dota['listbrg'] = $this->modelmu->selectStatus();
+						$data['content'] = $this->load->view('pages/content/admin/list_barang', $dota , TRUE);
+						$this->load->view("pages/base", $data);
 		 		}
 		 		else {
 		 		redirect('login?err=ad');
@@ -64,6 +65,9 @@ class Admin extends CI_Controller {
 			$dota['judul'] = "Tambah Barang";
 			$data['content'] = $this->load->view('pages/content/admin/tambah_barang', $dota , TRUE);
 						$this->load->view("pages/base", $data);
+			if($this->input->get('act')=="kliktambah"){
+				//code for adding to DB
+			}
 		}
 		else {
 			redirect('login?err=ad');
@@ -80,18 +84,16 @@ class Admin extends CI_Controller {
 			$dota['judul'] = "Edit Barang";
 			$data['content'] = $this->load->view('pages/content/admin/tambah_barang', $dota , TRUE);
 						$this->load->view("pages/base", $data);
+			if($this->input->get('act')=="klikedit"){
+				//code for updating DB
+			}
 		}
 		else {
 			redirect('login?err=ad');
 		}
 	}
 
-	public function kliktambah(){
-		$nm_brg = $this->input->get('add');
-		$stts = $this->input->get('status');
-		$nama;
 
-	}
 
 	public function confirmTake($id){
 		$profile = $this->session->userdata('profile');
@@ -101,11 +103,12 @@ class Admin extends CI_Controller {
 			$data = array('confirmA' => '1');
 			$this->modelmu->updatedata('barang', $data, array('id_barang' => $id));
 		}
-		else if(strpos($nama_usr, 'emil') !== false)
+		else if(strpos($nama_usr, 'suko') !== false){
 			//jika nama mengandung suko
 			$data = array('confirmB' => '1');
 			$this->modelmu->updatedata('barang', $data, array('id_barang' => $id));
 			} //confirmTake untuk konfirmasi ambil barang
+		}
 
 
 
