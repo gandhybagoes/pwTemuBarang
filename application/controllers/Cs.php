@@ -123,6 +123,7 @@ class Cs extends CI_Controller
 		$this->load->view('pages/baseCS', $data);
 		}
 		else {
+<<<<<<< HEAD
 			redirect('login');
 		}
 
@@ -217,6 +218,51 @@ class Cs extends CI_Controller
  			alert('Data Berhasil Ditambahkan');
 			</script>";
 		}
+=======
+			$jenis = $this->input->post('jenisbarang');
+			$last_id = $this->modelmu->hitungid($jenis);
+			$idbrg = $jenis.($last_id+1);
+			$txtjenis = "";
+			if($this->input->post('jenisbarang') == 'crg'){
+				$txtjenis = "Charger";
+			}
+			$nama = $this->input->post('namabarang'),
+			$keterangan = $this->input->post('keteranganbarang'),
+			$lokasi = $this->input->post('lokasibarang'),
+			$foto = $this->do_upload_barang(),
+			$id_status = "st1",
+			$conA = 0,
+			$conB = 0,
+
+			if($foto == null){
+				echo "
+				<script>
+	 			alert('Ambil Gambar Barang');
+				</script>";
+			}
+			else{
+			$data = array(
+					'id_barang' => $idbrg,
+					'nama_barang' => $nama,
+					'ket_barang' => $keterangan,
+					'jenis_barang' => $jenis,
+					'lokasi_barang' => $lokasi,
+					'foto_barang' => $foto,
+					'id_status' => $id_status,
+					'confirmA' => $conA,
+					'confirmB' => $conB
+ 			);
+ 			$this->modelmu->insert_entry('barang', $data);
+ 			
+				echo "
+				<script type='text/javascript'>MyFunction();</script>
+
+				<div id='snackbar'>Data Added</div>";
+			}
+		}
+
+		
+>>>>>>> 2a480e5698ee4bfea55a3778c9c4f72802610bf3
 	}
 
 	function do_upload_barang(){

@@ -7,7 +7,7 @@
                     <div class="col-lg-12">
                         <div class="form-panel">
                             <h3 class="mb"><i class="fa fa-angle-right"></i><?= $judul ?></h3>
-                            <form method="post" action="<?= ($judul=="Tambah Barang")?base_url('admin/tambah_barang'):base_url('admin/edit_barang') ?>">
+                            <form method="post" action="<?= ($judul=="Tambah User")?base_url('admin/kliktambah'):base_url('admin/klikedit') ?>">
                                 <div class="form-group">
                                     <label for="exampleInputEmail1">Nama Barang</label>
                                     <input type="text" class="form-control" id="namabarang" aria-describedby="emailHelp" placeholder="Masukkan Nama Barang" name="nama_barang" value="<?= isset($isine)?$isine['0']['nama_barang']:"" ?>" />

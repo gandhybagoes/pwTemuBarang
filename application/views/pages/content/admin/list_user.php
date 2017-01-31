@@ -1,16 +1,4 @@
 <!--main content start-->
-            <!-- The Modal -->
-              <div id="myModal" class="modal">
-
-                <!-- The Close Button -->
-                <span class="close" onclick="document.getElementById('myModal').style.display='none'">&times;</span>
-
-                <!-- Modal Content (The Image) -->
-                <img class="modal-content" id="img01">
-
-                <!-- Modal Caption (Image Text) -->
-                <div id="caption"></div>
-              </div>
       <section id="main-content">
           <section class="wrapper">
           	<h3><i class="fa fa-angle-right"></i> List Barang</h3>
@@ -35,7 +23,6 @@
                               </tr>
                               </thead>
                               <tbody>
-
                               <?php 
                               //print_r($listbrg);
                               foreach($listbrg as $a) { ?>
@@ -45,7 +32,7 @@
                                   <td class="hidden-phone"><?= $a['ket_barang']; ?></td>
                                   <td><?= $a['lokasi_barang']; ?></td>
                                    <?= $a['code_status']; ?>
-                                   <td><img id="myImg" src="<?= base_url('assets/img/barang/').$a['foto_barang'].'.jpg' ?>" alt="<?= $a['foto_barang']; ?>" width="200" height="200"></td>
+                                    <td><?= '<a href="javascript:;" id="foto_click" >'$a['foto_barang']; '</a>'?></td>
                                   <!-- <td><span class="label label-info label-mini">Due</span></td> GET DARI DATABASE?? -->
                                   <?php if(($a['confirmA'] == 1 && $profile['0']['username_user'] == "Suko") || ($a['confirmB'] == 1 && $profile['0']['username_user'] == "Emil")) {
                                     ?>

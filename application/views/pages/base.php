@@ -19,6 +19,7 @@
     
     <!-- Custom styles for this template -->
     <link href="<?php echo base_url(); ?>/assets/css/style.css" rel="stylesheet">
+    <link href="<?php echo base_url(); ?>/assets/toastSimple.css" rel="stylesheet">
     <link href="<?php echo base_url(); ?>/assets/css/style-responsive.css" rel="stylesheet">
 
     <script src="<?php echo base_url(); ?>/assets/js/chart-master/Chart.js"></script>
@@ -208,7 +209,7 @@
                   echo $profile['0']['nama_user']; ?></h5>
               	  	
                   <li class="mt">
-                      <a class="active" href="index.html">
+                      <a class="active" href="<?= base_url('admin')?>">
                           <i class="fa fa-dashboard"></i>
                           <span>Dashboard</span>
                       </a>
@@ -264,6 +265,7 @@
     <script src="<?php echo base_url(); ?>/assets/js/jquery.js"></script>
     <script src="<?php echo base_url(); ?>/assets/js/jquery-1.8.3.min.js"></script>
     <script src="<?php echo base_url(); ?>/assets/js/bootstrap.min.js"></script>
+    <script src="<?php echo base_url(); ?>/assets/bootbox.min.js"></script>
     <script class="include" type="text/javascript" src="<?php echo base_url(); ?>/assets/js/jquery.dcjqaccordion.2.7.js"></script>
     <script src="<?php echo base_url(); ?>/assets/js/jquery.scrollTo.min.js"></script>
     <script src="<?php echo base_url(); ?>/assets/js/jquery.nicescroll.js" type="text/javascript"></script>
@@ -272,7 +274,7 @@
 
     <!--common script for all pages-->
     <script src="<?php echo base_url(); ?>/assets/js/common-scripts.js"></script>
-    
+    <script src="<?php echo base_url(); ?>/assets/toastSimple.js"></script>
     <script type="text/javascript" src="<?php echo base_url(); ?>/assets/js/gritter/js/jquery.gritter.js"></script>
     <script type="text/javascript" src="<?php echo base_url(); ?>/assets/js/gritter-conf.js"></script>
 
@@ -289,15 +291,64 @@
             // (string | optional) the image to display on the left
             image: '<?php echo base_url(); ?>/assets/img/ui-sam.jpg',
             // (bool | optional) if you want it to fade out on its own or just sit there
-            sticky: true,
+            sticky: false,
             // (int | optional) the time you want it to be alive for before fading out
-            time: '',
+            time: '10',
             // (string | optional) the class name you want to apply to that specific message
             class_name: 'my-sticky-class'
         });
 
         return false;
         });
+
+        $('#hapusbarang').click(function(event){
+          var a = $(this).val();
+              bootbox.confirm({
+        message: "Apa anda yakin ingin menghapus barang dengan id = " + a,
+        buttons: {
+            confirm: {
+                label: 'Yes',
+                className: 'btn-success'
+            },
+            cancel: {
+                label: 'No',
+                className: 'btn-danger'
+            }
+        },
+        callback: function (result) {
+            if(result=="true"){
+                $.ajax({
+                'data' : '',
+                'method' : 'POST',
+                'url' : '<?= base_url('admin/listBarang?act=delbrg&id_brg=');?>'+a,
+                'success' : function(data){
+                  bootbox.alert('Delete Success!');
+                  setTimeout("bootbox.hideAll()", 500);
+                  // $('#tmbhkateg [data-dismiss="modal"]').click();
+                   // setTimeout("loadMain('');", 500);
+                },
+                'error' : function(data){
+                  alert('ajax error');
+                }
+
+              });
+            }
+            else{
+              bootbox.alert('Delete Failed!');
+            }
+        }
+    });
+          
+       
+      return false;
+    });
+
+        $('#foto_click').click( function(e) {e.preventDefault(); /*your_code_here;*/
+                    console.log('klik');
+                    bootbox.alert("Do you like my image?<br/><img src='<?= base_url('assets/img/barang/') ?>" + $(this).val() + "'>", function() {
+                    console.log("It was awesome!");
+                    });
+         return false; } );
 	</script>
 	
 	<script type="application/javascript">
