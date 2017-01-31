@@ -56,11 +56,16 @@ class Modelmu extends CI_Model {
 
     function hitungid($idjns)
     {
-        $query = $this->db->select('*')
+        $query = $this->db->query("SELECT * FROM barang WHERE id_barang LIKE '%$idjns%'");
+       /* $query = $this->db->select('*')
                           ->from('barang')
-                          ->where('id_barang LIKE '.$idjns.'%')
-                          ->get();
+                          ->like('id_barang '.$idjns."%")
+                          ->get();*/
         return $query->num_rows();
+    }
+
+    function inputbarang($data, $table){
+        $this->db->insert($table, $data);
     }
 
 }
