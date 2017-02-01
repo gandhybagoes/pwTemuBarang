@@ -190,39 +190,7 @@
                       		</p>
                       	</div>
                       </div>
-                      <!-- Third Member -->
-                      <div class="desc">
-                      	<div class="thumb">
-                      		<img class="img-circle" src="<?php echo base_url(); ?>/assets/img/ui-danro.jpg" width="35px" height="35px" align="">
-                      	</div>
-                      	<div class="details">
-                      		<p><a href="#">DAN ROGERS</a><br/>
-                      		   <muted>Available</muted>
-                      		</p>
-                      	</div>
-                      </div>
-                      <!-- Fourth Member -->
-                      <div class="desc">
-                      	<div class="thumb">
-                      		<img class="img-circle" src="<?php echo base_url(); ?>/assets/img/ui-zac.jpg" width="35px" height="35px" align="">
-                      	</div>
-                      	<div class="details">
-                      		<p><a href="#">Zac Sniders</a><br/>
-                      		   <muted>Available</muted>
-                      		</p>
-                      	</div>
-                      </div>
-                      <!-- Fifth Member -->
-                      <div class="desc">
-                      	<div class="thumb">
-                      		<img class="img-circle" src="<?php echo base_url(); ?>/assets/img/ui-sam.jpg" width="35px" height="35px" align="">
-                      	</div>
-                      	<div class="details">
-                      		<p><a href="#">Marcel Newman</a><br/>
-                      		   <muted>Available</muted>
-                      		</p>
-                      	</div>
-                      </div>
+                     
 
                         <!-- CALENDAR-->
                        

@@ -15,7 +15,8 @@
     <link href="<?php echo base_url(); ?>/assets/font-awesome/css/font-awesome.css" rel="stylesheet" />
     <link rel="stylesheet" type="text/css" href="<?php echo base_url(); ?>/assets/css/zabuto_calendar.css">
     <link rel="stylesheet" type="text/css" href="<?php echo base_url(); ?>/assets/js/gritter/css/jquery.gritter.css" />
-    <link rel="stylesheet" type="text/css" href="<?php echo base_url(); ?>/assets/lineicons/style.css">    
+    <link rel="stylesheet" type="text/css" href="<?php echo base_url(); ?>/assets/lineicons/style.css"> 
+     <link href="<?php echo base_url(); ?>assets/js/fancybox/jquery.fancybox.css" rel="stylesheet" />   
     
     <!-- Custom styles for this template -->
     <link href="<?php echo base_url(); ?>/assets/css/style.css" rel="stylesheet">
@@ -221,7 +222,7 @@
                           <span>Data</span>
                       </a>
                       <ul class="sub">
-                          <li><a  href="general.html">List Users</a></li>
+                          <li><a  href="<?= base_url('admin/listUser'); ?>">List Users</a></li>
                           <li><a  href="<?php echo base_url('admin/listBarang'); ?>">List Barang</a></li>
                       </ul>
                   </li>
@@ -266,6 +267,7 @@
     <script src="<?php echo base_url(); ?>/assets/js/jquery-1.8.3.min.js"></script>
     <script src="<?php echo base_url(); ?>/assets/js/bootstrap.min.js"></script>
     <script src="<?php echo base_url(); ?>/assets/bootbox.min.js"></script>
+      <script src="<?php echo base_url(); ?>assets/js/fancybox/jquery.fancybox.js"></script>    
     <script class="include" type="text/javascript" src="<?php echo base_url(); ?>/assets/js/jquery.dcjqaccordion.2.7.js"></script>
     <script src="<?php echo base_url(); ?>/assets/js/jquery.scrollTo.min.js"></script>
     <script src="<?php echo base_url(); ?>/assets/js/jquery.nicescroll.js" type="text/javascript"></script>
@@ -362,6 +364,14 @@
             console.log('nav ' + nav + ' to: ' + to.month + '/' + to.year);
         }
     </script>
+  
+  <script type="text/javascript">
+      $(function() {
+        //    fancybox
+          jQuery(".fancybox").fancybox();
+      });
+
+  </script>
   
 
   </body>

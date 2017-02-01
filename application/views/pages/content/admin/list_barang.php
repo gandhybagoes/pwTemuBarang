@@ -1,16 +1,3 @@
-<!--main content start-->
-            <!-- The Modal -->
-              <div id="myModal" class="modal">
-
-                <!-- The Close Button -->
-                <span class="close" onclick="document.getElementById('myModal').style.display='none'">&times;</span>
-
-                <!-- Modal Content (The Image) -->
-                <img class="modal-content" id="img01">
-
-                <!-- Modal Caption (Image Text) -->
-                <div id="caption"></div>
-              </div>
       <section id="main-content">
           <section class="wrapper">
           	<h3><i class="fa fa-angle-right"></i> List Barang</h3>
@@ -22,14 +9,14 @@
                            <a href="<?= base_url('admin/tambah_barang') ?>"><button class="btn btn-success"><i class="fa fa-plus"></i> Tambah</button></a>
 	                  	  	  <hr>
                               <thead>
-                              <tr>
-                                  <th><i class="fa fa-bullhorn"></i> Name</th>
-                                  <th class="hidden-phone"><i class="fa fa-question-circle"></i> Jenis</th>
-                                  <th class="hidden-phone"><i class="fa fa-question-circle"></i> Keterangan</th>
-                                  <th><i class="fa fa-bookmark"></i> Lokasi</th>
-                                  <th><i class=" fa fa-edit"></i> Status</th>
-                                  <th><i class=" fa fa-edit"></i> Foto</th>
-                                  <th><i class=" fa fa-edit"></i> Action</th>
+                              <tr >
+                                  <th><center><i class="fa fa-bullhorn"></i> Name</center></th>
+                                  <th class="hidden-phone"><center><i class="fa fa-question-circle"></i> Jenis</center></th>
+                                  <th class="hidden-phone"><center><i class="fa fa-question-circle"></i> Keterangan</center></th>
+                                  <th><center><i class="fa fa-bookmark"></i> Lokasi</center></th>
+                                  <th><center><i class=" fa fa-edit"></i> Status</center></th>
+                                  <th><center><i class=" fa fa-edit"></i> Foto</center></th>
+                                  <th><center><i class=" fa fa-edit"></i> Action</center></th>
 
                                   <th></th>
                               </tr>
@@ -40,29 +27,40 @@
                               //print_r($listbrg);
                               foreach($listbrg as $a) { ?>
                               <tr>
-                                  <td><a href="basic_table.html#"><?= $a['nama_barang']; ?></a></td>
-                                  <td class="hidden-phone"><?= $a['jenis_barang']; ?></td>
-                                  <td class="hidden-phone"><?= $a['ket_barang']; ?></td>
-                                  <td><?= $a['lokasi_barang']; ?></td>
+                                  <td><center><a href="basic_table.html#"><?= $a['nama_barang']; ?></a></center></td>
+                                  <td class="hidden-phone"><center><?= $a['jenis_barang']; ?></center></td>
+                                  <td class="hidden-phone"><center><?= $a['ket_barang']; ?></center></td>
+                                  <td><center><?= $a['lokasi_barang']; ?></center></td>
                                    <?= $a['code_status']; ?>
-                                   <td><img id="myImg" src="<?= base_url('assets/img/barang/').$a['foto_barang'].'.jpg' ?>" alt="<?= $a['foto_barang']; ?>" width="200" height="200"></td>
+                                  <td width="15%" class="row"><center><div class="">
+                                      <div class="project-wrapper">
+                                                  <div class="project">
+                                                      <div class="photo-wrapper">
+                                                          <div class="photo">
+                                                            <a class="fancybox" href="<?= base_url('assets/img/barang/').$a['foto_barang'].'.jpg'; ?>"><img class="img-responsive" src="<?= base_url('assets/img/barang/').$a['foto_barang'].'.jpg'; ?>" alt=""></a>
+                                                          </div>
+                                                          <div class="overlay"></div>
+                                                      </div>
+                                                  </div>
+                                              </div>
+                                    </div><!-- col-lg-4 --></center></td>
                                   <!-- <td><span class="label label-info label-mini">Due</span></td> GET DARI DATABASE?? -->
                                   <?php if(($a['confirmA'] == 1 && $profile['0']['username_user'] == "Suko") || ($a['confirmB'] == 1 && $profile['0']['username_user'] == "Emil")) {
                                     ?>
-                                      <td>
+                                      <td><center>
                                       <button class="btn btn-success btn-xs" disabled><i class="fa fa-check"></i></button>
                                       <a href="<?= base_url('admin/edit_barang?id_brg='); echo $a['id_barang']; ?>"><button class="btn btn-primary btn-xs"><i class="fa fa-pencil"></i></button></a>
-                                     <button id="hapusbarang"  class="btn btn-danger btn-xs" value="<?= $a['id_barang'] ?>"><i class="fa fa-trash-o "></i></button>
+                                     <button id="hapusbarang"  class="btn btn-danger btn-xs" value="<?= $a['id_barang'] ?>"><i class="fa fa-trash-o "></i></button></center>
                                       </td> 
                                     <?php } else if($a['confirmA'] == 1 && $a['confirmB'] == 1) { ?>
-                                      <td>
+                                      <td><center>
                                       <a href="<?= base_url('admin/edit_barang?id_brg='); echo $a['id_barang']; ?>"><button class="btn btn-primary btn-xs"><i class="fa fa-pencil"></i></button></a>
                                       <button id="hapusbarang" class="btn btn-danger btn-xs" value="<?= $a['id_barang'] ?>"><i class="fa fa-trash-o "></i></button>
-                                      <?php } else{?>
-                                       <td>
+                                      <?php } else{?></center>
+                                       <td><center>
                                           <button class="btn btn-success btn-xs"><i class="fa fa-check"></i></button>
                                           <a href="<?= base_url('admin/edit_barang?id_brg='); echo $a['id_barang']; ?>"><button class="btn btn-primary btn-xs"><i class="fa fa-pencil"></i></button></a>
-                                          <button id="hapusbarang"  class="btn btn-danger btn-xs" value="<?= $a['id_barang'] ?>"><i class="fa fa-trash-o "></i></button>
+                                          <button id="hapusbarang"  class="btn btn-danger btn-xs" value="<?= $a['id_barang'] ?>"><i class="fa fa-trash-o "></i></button></center>
                                       </td> 
                                   <?php } ?>
                               </tr>
