@@ -204,7 +204,7 @@
               <!-- sidebar menu start-->
               <ul class="sidebar-menu" id="nav-accordion">
               
-              	  <p class="centered"><a href="profile.html"><img src="<?php echo base_url(); ?>/assets/img/ui-sam.jpg" class="img-circle" width="60"></a></p>
+              	  <p class="centered"><a href="profile.html"><img src="<?php echo base_url(); ?>/assets/img/pp/ui-sam.jpg" class="img-circle" width="60"></a></p>
               	  <h5 class="centered"><?php 
                   $profile = $this->session->userdata('profile');
                   echo $profile['0']['nama_user']; ?></h5>
@@ -342,6 +342,48 @@
     });
           
        
+      return false;
+    });
+
+
+      $('.confirmTake').click(function(event){
+          var a = $(this).val();
+              bootbox.confirm({
+        message: "Apa anda yakin ingin konfirmasi pengambilan barang dengan id = " + a,
+        buttons: {
+            confirm: {
+                label: 'Yes',
+                className: 'btn-success'
+            },
+            cancel: {
+                label: 'No',
+                className: 'btn-danger'
+            }
+        },
+        callback: function (result) {
+            if(result==true){
+                $.ajax({
+                'data' : '',
+                'method' : 'POST',
+                'url' : '<?= base_url('admin/confirmTake/');?>'+a,
+                'success' : function(data){
+                  bootbox.alert('Konfirmasi Sukses!');
+                  setTimeout("bootbox.hideAll()", 500);
+                  // $('#tmbhkateg [data-dismiss="modal"]').click();
+                   // setTimeout("loadMain('');", 500);
+                },
+                'error' : function(data){
+                  alert('ajax error');
+                }
+
+              });
+            }
+            else{
+              bootbox.alert('Konfirmasi Gagal!');
+              setTimeout("bootbox.hideAll()", 500);
+            }
+        }
+    });
       return false;
     });
 	</script>

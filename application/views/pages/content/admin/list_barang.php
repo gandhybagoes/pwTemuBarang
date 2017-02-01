@@ -37,7 +37,7 @@
                                                   <div class="project">
                                                       <div class="photo-wrapper">
                                                           <div class="photo">
-                                                            <a class="fancybox" href="<?= base_url('assets/img/barang/').$a['foto_barang'].'.jpg'; ?>"><img class="img-responsive" src="<?= base_url('assets/img/barang/').$a['foto_barang'].'.jpg'; ?>" alt=""></a>
+                                                            <a class="fancybox" href="<?= base_url('assets/img/barang/').$a['foto_barang'].'.jpg'; ?>"><img class="img-responsive" src="<?= base_url('assets/img/barang/').$a['foto_barang']; ?>" alt=""></a>
                                                           </div>
                                                           <div class="overlay"></div>
                                                       </div>
@@ -45,20 +45,20 @@
                                               </div>
                                     </div><!-- col-lg-4 --></center></td>
                                   <!-- <td><span class="label label-info label-mini">Due</span></td> GET DARI DATABASE?? -->
-                                  <?php if(($a['confirmA'] == 1 && $profile['0']['username_user'] == "Suko") || ($a['confirmB'] == 1 && $profile['0']['username_user'] == "Emil")) {
+                                  <?php $profile = $this->session->userdata('profile'); if(($a['confirmA'] == "1" && $profile['0']['username_user'] == "Suko" && $a['confirmB'] == "0") || ($a['confirmB'] == "1" && $profile['0']['username_user'] == "Emil") && $a['confirmA'] == "0") {
                                     ?>
                                       <td><center>
-                                      <button class="btn btn-success btn-xs" disabled><i class="fa fa-check"></i></button>
+                                      <button class="btn btn-success btn-xs " disabled><i class="fa fa-check"></i></button>
                                       <a href="<?= base_url('admin/edit_barang?id_brg='); echo $a['id_barang']; ?>"><button class="btn btn-primary btn-xs"><i class="fa fa-pencil"></i></button></a>
                                      <button   class="btn btn-danger btn-xs hapusbarang" value="<?= $a['id_barang'] ?>"><i class="fa fa-trash-o "></i></button></center>
                                       </td> 
-                                    <?php } else if($a['confirmA'] == 1 && $a['confirmB'] == 1) { ?>
+                                    <?php } else if($a['confirmA'] == "1" && $a['confirmB'] == "1") { ?>
                                       <td><center>
                                       <a href="<?= base_url('admin/edit_barang?id_brg='); echo $a['id_barang']; ?>"><button class="btn btn-primary btn-xs"><i class="fa fa-pencil"></i></button></a>
                                       <button  class="btn btn-danger btn-xs hapusbarang" value="<?= $a['id_barang'] ?>"><i class="fa fa-trash-o "></i></button>
                                       <?php } else{?></center>
                                        <td><center>
-                                          <button class="btn btn-success btn-xs"><i class="fa fa-check"></i></button>
+                                          <button class="btn btn-success btn-xs confirmTake" value="<?= $a['id_barang'] ?>"><i class="fa fa-check"></i></button>
                                           <a href="<?= base_url('admin/edit_barang?id_brg='); echo $a['id_barang']; ?>"><button class="btn btn-primary btn-xs"><i class="fa fa-pencil"></i></button></a>
                                           <button  class="btn btn-danger btn-xs hapusbarang" value="<?= $a['id_barang'] ?>"><i class="fa fa-trash-o "></i></button></center>
                                       </td> 

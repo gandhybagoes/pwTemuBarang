@@ -103,13 +103,13 @@ class Admin extends CI_Controller {
 
 	public function confirmTake($id){
 		$profile = $this->session->userdata('profile');
-		$nama_usr = $profile['0']['nama_user'];
-		if(strpos($nama_usr, 'emil') !== false){
+		$nama_usr = $profile['0']['username_user'];
+		if(strpos($nama_usr, 'Suko') !== false){
 			//jika nama mengandung emil
 			$data = array('confirmA' => '1');
 			$this->modelmu->updatedata('barang', $data, array('id_barang' => $id));
 		}
-		else if(strpos($nama_usr, 'suko') !== false){
+		else if(strpos($nama_usr, 'Emil') !== false){
 			//jika nama mengandung suko
 			$data = array('confirmB' => '1');
 			$this->modelmu->updatedata('barang', $data, array('id_barang' => $id));

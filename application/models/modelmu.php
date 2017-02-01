@@ -45,7 +45,7 @@ class Modelmu extends CI_Model {
                 return $this->db->insert($table, $content);
         }
 
-        function updatedata($where,$data,$table){
+        function updatedata($table,$data,$where){
         $this->db->update($table,$data, $where);
     }
 
