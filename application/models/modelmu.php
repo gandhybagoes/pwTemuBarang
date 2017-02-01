@@ -45,19 +45,17 @@ class Modelmu extends CI_Model {
                 return $this->db->insert($table, $content);
         }
 
-        function updatedata($table,$data,$where){
+        function updatedata($where,$data,$table){
+        $this->db->update($table,$data, $where);
+    }
+
+    function updatedatabrg($where,$data,$table){
         $this->db->update($table,$data, $where);
     }
 
     function updatedatalog($dimana,$datalog,$table){
         $this->db->where($dimana);
         $this->db->update($table,$datalog);
-    }
-
-    function delete($id) {
-        $query = $this->db->where('id_barang', $id)
-                          ->delete('barang');
-        return $query;
     }
 
     function hitungid($idjns)

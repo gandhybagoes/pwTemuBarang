@@ -33,7 +33,7 @@
                                 </div>
                                 <div class="form-group">
                                     <label for="exampleInputEmail1">Nomor Telepon</label>
-                                    <input type="tel" pattern="\d\d\d\d\d\d\d\d\d\d\d\d\d" class="form-control" id="nomortlp" name="nomortlp" aria-describedby="emailHelp" value="<?php echo $dtprof['0']['notelp_user']; ?>">
+                                    <input type="text" pattern="\d\d\d\d\d\d\d\d\d\d\d\d\d" class="form-control" id="nomortlp" name="nomortlp" aria-describedby="emailHelp" value="<?php echo $dtprof['0']['notelp_user']; ?>">
                                 </div>
                                 <div class="form-group">
                                     <label for="exampleInputFile">Ganti Foto Profile</label>
