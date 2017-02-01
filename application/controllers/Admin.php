@@ -41,6 +41,10 @@ class Admin extends CI_Controller {
 						$dota['listbrg'] = $this->modelmu->selectStatus();
 						$data['content'] = $this->load->view('pages/content/admin/list_barang', $dota , TRUE);
 						$this->load->view("pages/base", $data);
+						if($this->input->get('act')=="delbrg"){
+							$id_brg = $this->input->get('id_brg');
+							$this->modelmu->delete($id_brg);
+						}
 		 		}
 		 		else {
 		 		redirect('login?err=ad');
@@ -92,6 +96,8 @@ class Admin extends CI_Controller {
 			redirect('login?err=ad');
 		}
 	}
+
+
 
 
 

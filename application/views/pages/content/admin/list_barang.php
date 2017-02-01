@@ -50,17 +50,17 @@
                                       <td><center>
                                       <button class="btn btn-success btn-xs" disabled><i class="fa fa-check"></i></button>
                                       <a href="<?= base_url('admin/edit_barang?id_brg='); echo $a['id_barang']; ?>"><button class="btn btn-primary btn-xs"><i class="fa fa-pencil"></i></button></a>
-                                     <button id="hapusbarang"  class="btn btn-danger btn-xs" value="<?= $a['id_barang'] ?>"><i class="fa fa-trash-o "></i></button></center>
+                                     <button   class="btn btn-danger btn-xs hapusbarang" value="<?= $a['id_barang'] ?>"><i class="fa fa-trash-o "></i></button></center>
                                       </td> 
                                     <?php } else if($a['confirmA'] == 1 && $a['confirmB'] == 1) { ?>
                                       <td><center>
                                       <a href="<?= base_url('admin/edit_barang?id_brg='); echo $a['id_barang']; ?>"><button class="btn btn-primary btn-xs"><i class="fa fa-pencil"></i></button></a>
-                                      <button id="hapusbarang" class="btn btn-danger btn-xs" value="<?= $a['id_barang'] ?>"><i class="fa fa-trash-o "></i></button>
+                                      <button  class="btn btn-danger btn-xs hapusbarang" value="<?= $a['id_barang'] ?>"><i class="fa fa-trash-o "></i></button>
                                       <?php } else{?></center>
                                        <td><center>
                                           <button class="btn btn-success btn-xs"><i class="fa fa-check"></i></button>
                                           <a href="<?= base_url('admin/edit_barang?id_brg='); echo $a['id_barang']; ?>"><button class="btn btn-primary btn-xs"><i class="fa fa-pencil"></i></button></a>
-                                          <button id="hapusbarang"  class="btn btn-danger btn-xs" value="<?= $a['id_barang'] ?>"><i class="fa fa-trash-o "></i></button></center>
+                                          <button  class="btn btn-danger btn-xs hapusbarang" value="<?= $a['id_barang'] ?>"><i class="fa fa-trash-o "></i></button></center>
                                       </td> 
                                   <?php } ?>
                               </tr>

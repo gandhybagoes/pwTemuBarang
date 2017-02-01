@@ -54,13 +54,24 @@ class Modelmu extends CI_Model {
         $this->db->update($table,$datalog);
     }
 
+    function delete($id) {
+        $query = $this->db->where('id_barang', $id)
+                          ->delete('barang');
+        return $query;
+    }
+
     function hitungid($idjns)
     {
-        $query = $this->db->select('*')
+        $query = $this->db->query("SELECT * FROM barang WHERE id_barang LIKE '%$idjns%'");
+       /* $query = $this->db->select('*')
                           ->from('barang')
-                          ->where('id_barang LIKE '.$idjns.'%')
-                          ->get();
+                          ->like('id_barang '.$idjns."%")
+                          ->get();*/
         return $query->num_rows();
+    }
+
+    function inputbarang($data, $table){
+        $this->db->insert($table, $data);
     }
 
 }

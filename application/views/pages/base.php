@@ -303,7 +303,7 @@
         return false;
         });
 
-        $('#hapusbarang').click(function(event){
+        $('.hapusbarang').click(function(event){
           var a = $(this).val();
               bootbox.confirm({
         message: "Apa anda yakin ingin menghapus barang dengan id = " + a,
@@ -318,7 +318,7 @@
             }
         },
         callback: function (result) {
-            if(result=="true"){
+            if(result==true){
                 $.ajax({
                 'data' : '',
                 'method' : 'POST',
@@ -344,13 +344,6 @@
        
       return false;
     });
-
-        $('#foto_click').click( function(e) {e.preventDefault(); /*your_code_here;*/
-                    console.log('klik');
-                    bootbox.alert("Do you like my image?<br/><img src='<?= base_url('assets/img/barang/') ?>" + $(this).val() + "'>", function() {
-                    console.log("It was awesome!");
-                    });
-         return false; } );
 	</script>
 	
 	<script type="application/javascript">
