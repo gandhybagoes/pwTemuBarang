@@ -34,8 +34,9 @@
                       	<div class="col-md-4 col-sm-4 mb">
                       		<div class="white-panel pn donut-chart">
                       			<div class="white-header">
-                              
-						  			           <h5><?php echo $u['nama_barang'] ?></h5>
+                                <button data-toggle="modal" data-target="#myModal">
+                                  <h5><?php echo $u['nama_barang'] ?></h5>
+                                </button>  
                       			</div>
               								<div class="row">
                                   <div class="col-sm-6 col-xs-6 goleft">
@@ -50,9 +51,30 @@
                       	</div><!-- /col-md-4-->
                       	<?php } ?>
                     </div>
+              
+              <!-- Modal -->
+              <?php foreach($user as $u){ ?>
+              <div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+                <div class="modal-dialog">
+                  <div class="modal-content">
+                    <div class="modal-header">
+                      <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+                      <h4 class="modal-title" id="myModalLabel">Modal title</h4>
+                    </div>
+                    <div class="modal-body">
+                      <?php echo $u['nama_barang'] ?>
+                    </div>
+                    <div class="modal-footer">
+                      <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+                      <button type="button" class="btn btn-primary">Save changes</button>
+                    </div>
+                  </div>
+                </div>
+              </div>  
+              <?php } ?>
                     <!-- /row -->
                   </div><!-- /col-lg-9 END SECTION MIDDLE -->
-                  
+              
       <!-- **********************************************************************************************************************************************************
       RIGHT SIDEBAR CONTENT
       *********************************************************************************************************************************************************** -->                  
