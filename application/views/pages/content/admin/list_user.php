@@ -1,7 +1,7 @@
 <!--main content start-->
       <section id="main-content">
           <section class="wrapper">
-          	<h3><i class="fa fa-angle-right"></i> List Barang</h3>
+          	<h3><i class="fa fa-angle-right"></i> List User</h3>
               <div class="row mt">
                   <div class="col-md-12">
                       <div class="content-panel">
@@ -11,12 +11,13 @@
 	                  	  	  <hr>
                               <thead>
                               <tr>
-                                  <th><i class="fa fa-bullhorn"></i> Name</th>
-                                  <th class="hidden-phone"><i class="fa fa-question-circle"></i> Jenis</th>
-                                  <th class="hidden-phone"><i class="fa fa-question-circle"></i> Keterangan</th>
-                                  <th><i class="fa fa-bookmark"></i> Lokasi</th>
-                                  <th><i class=" fa fa-edit"></i> Status</th>
-                                  <th><i class=" fa fa-edit"></i> Foto</th>
+                                  <th><i class="fa fa-bullhorn"></i> Nama</th>
+                                  <th class="hidden-phone"><i class="fa fa-question-circle"></i> Username</th>
+                                  <th class="hidden-phone"><i class="fa fa-question-circle"></i> Password</th>
+                                  <th class="hidden-phone"><i class="fa fa-question-circle"></i> No Telp</th>
+                                  <th><i class="fa fa-bookmark"></i> Foto</th>
+                                  <th><i class=" fa fa-edit"></i> Kelas</th>
+                                  <th><i class=" fa fa-edit"></i> No Absen</th>
                                   <th><i class=" fa fa-edit"></i> Action</th>
 
                                   <th></th>

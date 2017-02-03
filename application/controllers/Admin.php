@@ -54,9 +54,13 @@ class Admin extends CI_Controller {
 	public function listUser()
 	{
 		 		if($this->session->userdata('id_user') != null && $this->session->userdata('tipe_user') == 1){
-						$dota['listbrg'] = $this->modelmu->selectStatus();
+						$dota['listusr'] = $this->modelmu->selectStatus();
 						$data['content'] = $this->load->view('pages/content/admin/list_barang', $dota , TRUE);
 						$this->load->view("pages/base", $data);
+						if($this->input->get('act')=="deluser"){
+							$id_user = $this->input->get('id_user');
+							$this->modelmu->delete($id_user);
+						}
 		 		}
 		 		else {
 		 		redirect('login?err=ad');
@@ -271,16 +275,31 @@ class Admin extends CI_Controller {
     }
 
 	public function confirmTake($id){
+		$check = $this->modelmu->select(array('id_barang' => $id), 'barang');
 		$profile = $this->session->userdata('profile');
-		$nama_usr = $profile['0']['nama_user'];
-		if(strpos($nama_usr, 'emil') !== false){
-			//jika nama mengandung emil
-			$data = array('confirmA' => '1');
+		$nama_usr = $profile['0']['username_user'];
+		if(strpos($nama_usr, 'Suko') !== false){
+			//jika nama mengandung suko
+			if($check['confirmB'] == '1' && $check['confirmA'] == '0'){
+			$data = array('confirmA' => '1', 
+						  'id_status' => 'st3');
+			}
+			else if($check['confirmB'] == '0' && $check['confirmA'] == '0'){
+			$data = array('confirmA' => '1', 
+						  'id_status' => 'st2');
+			}
 			$this->modelmu->updatedata('barang', $data, array('id_barang' => $id));
 		}
-		else if(strpos($nama_usr, 'suko') !== false){
-			//jika nama mengandung suko
-			$data = array('confirmB' => '1');
+		else if(strpos($nama_usr, 'Emil') !== false){
+			//jika nama mengandung emil
+			if($check['confirmA'] == '1' && $check['confirmB'] == '0'){
+			$data = array('confirmB' => '1', 
+						  'id_status' => 'st3');
+			}
+			else if($check['confirmA'] == '0' && $check['confirmB'] == '0'){
+			$data = array('confirmB' => '1', 
+						  'id_status' => 'st2');
+			}
 			$this->modelmu->updatedata('barang', $data, array('id_barang' => $id));
 			} //confirmTake untuk konfirmasi ambil barang
 		}

@@ -37,7 +37,7 @@
                                                   <div class="project">
                                                       <div class="photo-wrapper">
                                                           <div class="photo">
-                                                            <a class="fancybox" href="<?= base_url('assets/img/barang/').$a['foto_barang'].'.jpg'; ?>"><img class="img-responsive" src="<?= base_url('assets/img/barang/').$a['foto_barang']; ?>" alt=""></a>
+                                                            <a class="fancybox" href="<?= base_url('assets/img/brg/').$a['foto_barang']; ?>"><img class="img-responsive" src="<?= base_url('assets/img/brg/').$a['foto_barang']; ?>" alt=""></a>
                                                           </div>
                                                           <div class="overlay"></div>
                                                       </div>
