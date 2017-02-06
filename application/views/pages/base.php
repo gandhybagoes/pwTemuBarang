@@ -113,7 +113,7 @@
                                 </a>
                             </li>
                             <li class="external">
-                                <a href="#">See All Tasks</a>
+                                <a href="#" class="test">See All Tasks</a>
                             </li>
                         </ul>
                     </li>
@@ -248,7 +248,9 @@
       MAIN CONTENT
       *********************************************************************************************************************************************************** -->
       <!--main content start-->
+      <div id="content">
      <?php echo $content; ?>
+     </div>
       <!--main content end-->
       <!--footer start-->
       <footer class="site-footer">
@@ -299,7 +301,17 @@
         return false;
         });
 
+<<<<<<< HEAD
         $('#hapusbarang').click(function(event){
+=======
+        $('.test').click(function(event){ 
+          $("#content").load("<?= base_url('admin/listBarang') ?>");
+
+
+          return false;});
+
+        $('.hapusbarang').click(function(event){
+>>>>>>> 0806aec992a8934fc2bcfba559f84acc3e397a99
           var a = $(this).val();
               bootbox.confirm({
         message: "Apa anda yakin ingin menghapus barang dengan id = " + a,
@@ -322,6 +334,7 @@
                 'success' : function(data){
                   bootbox.alert('Delete Success!');
                   setTimeout("bootbox.hideAll()", 500);
+                  location.reload();
                   // $('#tmbhkateg [data-dismiss="modal"]').click();
                    // setTimeout("loadMain('');", 500);
                 },
@@ -333,6 +346,7 @@
             }
             else{
               bootbox.alert('Delete Failed!');
+               setTimeout("bootbox.hideAll()", 500);
             }
         }
     });

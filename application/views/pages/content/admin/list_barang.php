@@ -45,7 +45,22 @@
                                   <td class="hidden-phone"><?= $a['ket_barang']; ?></td>
                                   <td><?= $a['lokasi_barang']; ?></td>
                                    <?= $a['code_status']; ?>
+<<<<<<< HEAD
                                    <td><img id="myImg" src="<?= base_url('assets/img/brg/').$a['foto_barang'] ?>" alt="<?= $a['foto_barang']; ?>" width="200" height="200"></td>
+=======
+                                  <td width="15%" class="row"><center><div class="">
+                                      <div class="project-wrapper">
+                                                  <div class="project">
+                                                      <div class="photo-wrapper">
+                                                          <div class="photo">
+                                                            <a class="fancybox" href="<?= base_url('assets/img/brg/').$a['foto_barang']; ?>"><img class="img-responsive" src="<?= base_url('assets/img/brg/').$a['foto_barang']; ?>" alt=""></a>
+                                                          </div>
+                                                          <div class="overlay"></div>
+                                                      </div>
+                                                  </div>
+                                              </div>
+                                    </div><!-- col-lg-4 --></center></td>
+>>>>>>> 0806aec992a8934fc2bcfba559f84acc3e397a99
                                   <!-- <td><span class="label label-info label-mini">Due</span></td> GET DARI DATABASE?? -->
                                   <?php if(($a['confirmA'] == 1 && $profile['0']['username_user'] == "Suko") || ($a['confirmB'] == 1 && $profile['0']['username_user'] == "Emil")) {
                                     ?>

@@ -11,12 +11,22 @@ main content start-->
 	                  	  	  <hr>
                               <thead>
                               <tr>
+<<<<<<< HEAD
                                   <th><i class="glyphicon glyphicon-user"></i> Name</th>
                                   <th class="hidden-phone"><i class="glyphicon glyphicon-home"></i> Kelas</th>
                                   <th class="hidden-phone"><i class="glyphicon glyphicon-list-alt"></i> No Absen</th>
                                   <th><i class="glyphicon glyphicon-earphone"></i> No Telepon</th>
                                   <th><i class="glyphicon glyphicon-eye-open"></i> Status</th>
                                   <th><i class="glyphicon glyphicon-picture"></i> Foto</th>
+=======
+                                  <th><i class="fa fa-bullhorn"></i> Nama</th>
+                                  <th class="hidden-phone"><i class="fa fa-question-circle"></i> Username</th>
+                                  <th class="hidden-phone"><i class="fa fa-question-circle"></i> Password</th>
+                                  <th class="hidden-phone"><i class="fa fa-question-circle"></i> No Telp</th>
+                                  <th><i class="fa fa-bookmark"></i> Foto</th>
+                                  <th><i class=" fa fa-edit"></i> Kelas</th>
+                                  <th><i class=" fa fa-edit"></i> No Absen</th>
+>>>>>>> 0806aec992a8934fc2bcfba559f84acc3e397a99
                                   <th><i class=" fa fa-edit"></i> Action</th>
 
                                   <th></th>

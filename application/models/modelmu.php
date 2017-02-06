@@ -31,6 +31,7 @@ class Modelmu extends CI_Model {
             return $query->result_array();
         }
 
+<<<<<<< HEAD
          public function selectAllUser()
         {
             $query = $this->db->select('profile.id_profile, profile.nama_user, profile.username_user, profile.kelas_user, profile.noabsen_user, profile.notelp_user, profile.foto_user, profile.id_user, login.password_user, login.type_user, login.nama_user as nmuser, login.id_user')
@@ -39,6 +40,16 @@ class Modelmu extends CI_Model {
                     ->get();
             return $query->result_array();
         }
+=======
+        public function selectUser(){
+            $query = $this->db->select('login.password_user, login.type_user, profile.username_user, profile.nama_user, profile.notelp_user, profile.foto_user, profile.kelas_user, profile.noabsen_user')
+                    ->from('profile')
+                    ->join('login', 'profile.id_user = login.id_user', 'inner')
+                    ->get();
+                return $query->result_array();
+        
+                } //selectUser untuk select User dan Profile
+>>>>>>> 0806aec992a8934fc2bcfba559f84acc3e397a99
 
         function ambilpass($where){
             $query = $this->db->select('profile.id_profile, profile.nama_user, profile.username_user, profile.notelp_user, profile.foto_user, profile.id_user, login.password_user, login.type_user, login.nama_user as nmuser, login.id_user')
@@ -54,7 +65,7 @@ class Modelmu extends CI_Model {
                 return $this->db->insert($table, $content);
         }
 
-        function updatedata($where,$data,$table){
+        function updatedata($table,$data, $where){
         $this->db->update($table,$data, $where);
     }
 
@@ -67,10 +78,15 @@ class Modelmu extends CI_Model {
         $this->db->update($table,$datalog);
     }
 
-        function delete($id) {
-        $query = $this->db->where('id_barang', $id)
-                          ->delete('barang');
-        return $query;
+    function deletebrg($id) {
+    $query = $this->db->where('id_barang', $id)
+                      ->delete('barang');
+    return $query;
+    }
+
+    function deleteusr($id) {
+    $query = "DELETE usr FROM user usr JOIN profile prf ON usr.id_user = prf.id_user WHERE usr.id_user = ? ";             
+    return  $this->db->query($query, array($id));
     }
 
 
