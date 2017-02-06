@@ -15,8 +15,7 @@
     <link href="<?php echo base_url(); ?>/assets/font-awesome/css/font-awesome.css" rel="stylesheet" />
     <link rel="stylesheet" type="text/css" href="<?php echo base_url(); ?>/assets/css/zabuto_calendar.css">
     <link rel="stylesheet" type="text/css" href="<?php echo base_url(); ?>/assets/js/gritter/css/jquery.gritter.css" />
-    <link rel="stylesheet" type="text/css" href="<?php echo base_url(); ?>/assets/lineicons/style.css"> 
-     <link href="<?php echo base_url(); ?>assets/js/fancybox/jquery.fancybox.css" rel="stylesheet" />   
+    <link rel="stylesheet" type="text/css" href="<?php echo base_url(); ?>/assets/lineicons/style.css">    
     
     <!-- Custom styles for this template -->
     <link href="<?php echo base_url(); ?>/assets/css/style.css" rel="stylesheet">
@@ -45,7 +44,7 @@
                   <div class="fa fa-bars tooltips" data-placement="right" data-original-title="Toggle Navigation"></div>
               </div>
             <!--logo start-->
-            <a href="index.html" class="logo"><b>TemuBarang</b></a>
+            <a href="<?php echo base_url();?>" class="logo"><b>Temu Barang</b></a>
             <!--logo end-->
             <div class="nav notify-row" id="top_menu">
                 <!--  notification start -->
@@ -204,7 +203,8 @@
               <!-- sidebar menu start-->
               <ul class="sidebar-menu" id="nav-accordion">
               
-              	  <p class="centered"><a href="profile.html"><img src="<?php echo base_url(); ?>/assets/img/pp/ui-sam.jpg" class="img-circle" width="60"></a></p>
+              	  <p class="centered"><img src="<?php echo base_url(); ?>/assets/img/pp/<?php $profile = $this->session->userdata('profile');
+                   echo $profile['0']['foto_user'];?>" class="img-circle" width="60"></p>
               	  <h5 class="centered"><?php 
                   $profile = $this->session->userdata('profile');
                   echo $profile['0']['nama_user']; ?></h5>
@@ -222,7 +222,7 @@
                           <span>Data</span>
                       </a>
                       <ul class="sub">
-                          <li><a  href="<?= base_url('admin/listUser'); ?>">List Users</a></li>
+                          <li><a  href="<?php echo base_url('admin/listUser'); ?>">List Users</a></li>
                           <li><a  href="<?php echo base_url('admin/listBarang'); ?>">List Barang</a></li>
                       </ul>
                   </li>
@@ -253,10 +253,7 @@
       <!--footer start-->
       <footer class="site-footer">
           <div class="text-center">
-              2014 - Alvarez.is
-              <a href="index.html#" class="go-top">
-                  <i class="fa fa-angle-up"></i>
-              </a>
+              2017 - Kelompok 1 - Temu Barang - SMK Telkom Malang
           </div>
       </footer>
       <!--footer end-->
@@ -267,7 +264,6 @@
     <script src="<?php echo base_url(); ?>/assets/js/jquery-1.8.3.min.js"></script>
     <script src="<?php echo base_url(); ?>/assets/js/bootstrap.min.js"></script>
     <script src="<?php echo base_url(); ?>/assets/bootbox.min.js"></script>
-      <script src="<?php echo base_url(); ?>assets/js/fancybox/jquery.fancybox.js"></script>    
     <script class="include" type="text/javascript" src="<?php echo base_url(); ?>/assets/js/jquery.dcjqaccordion.2.7.js"></script>
     <script src="<?php echo base_url(); ?>/assets/js/jquery.scrollTo.min.js"></script>
     <script src="<?php echo base_url(); ?>/assets/js/jquery.nicescroll.js" type="text/javascript"></script>
@@ -303,7 +299,7 @@
         return false;
         });
 
-        $('.hapusbarang').click(function(event){
+        $('#hapusbarang').click(function(event){
           var a = $(this).val();
               bootbox.confirm({
         message: "Apa anda yakin ingin menghapus barang dengan id = " + a,
@@ -318,7 +314,7 @@
             }
         },
         callback: function (result) {
-            if(result==true){
+            if(result=="true"){
                 $.ajax({
                 'data' : '',
                 'method' : 'POST',
@@ -345,52 +341,83 @@
       return false;
     });
 
-
-      $('.confirmTake').click(function(event){
-          var a = $(this).val();
-              bootbox.confirm({
-        message: "Apa anda yakin ingin konfirmasi pengambilan barang dengan id = " + a,
-        buttons: {
-            confirm: {
-                label: 'Yes',
-                className: 'btn-success'
-            },
-            cancel: {
-                label: 'No',
-                className: 'btn-danger'
-            }
-        },
-        callback: function (result) {
-            if(result==true){
-                $.ajax({
-                'data' : '',
-                'method' : 'POST',
-                'url' : '<?= base_url('admin/confirmTake/');?>'+a,
-                'success' : function(data){
-                  bootbox.alert('Konfirmasi Sukses!');
-                  setTimeout("bootbox.hideAll()", 500);
-                  // $('#tmbhkateg [data-dismiss="modal"]').click();
-                   // setTimeout("loadMain('');", 500);
-                },
-                'error' : function(data){
-                  alert('ajax error');
-                }
-
-              });
-            }
-            else{
-              bootbox.alert('Konfirmasi Gagal!');
-              setTimeout("bootbox.hideAll()", 500);
-            }
-        }
-    });
-      return false;
-    });
+        $('#foto_click').click( function(e) {e.preventDefault(); /*your_code_here;*/
+                    console.log('klik');
+                    bootbox.alert("Do you like my image?<br/><img src='<?= base_url('assets/img/barang/') ?>" + $(this).val() + "'>", function() {
+                    console.log("It was awesome!");
+                    });
+         return false; } );
 	</script>
-	
 	<script type="application/javascript">
         
-        
+        $('#tipeuser').on('change', function() {
+         if(this.value == '0'){
+           /*$("<input type='text' value='' />")
+             .attr("id", "myfieldid")
+             .attr("name", "myfieldid")
+             .attr("class", "form-control")
+             .appendTo("#tambah");*/
+            $("<label id='kelas'>Kelas</label>")
+            .appendTo("#tambah");
+            $("<select class='form-control' name='kelas' id='ikelas'>"+
+              //kelas 10 rpl
+                "<option value='X RPL 1'>X RPL 1</option>"+
+                "<option value='X RPL 2'>X RPL 2</option>"+
+                "<option value='X RPL 3'>X RPL 3</option>"+
+                "<option value='X RPL 4'>X RPL 4</option>"+
+                "<option value='X RPL 5'>X RPL 5</option>"+
+                "<option value='X RPL 6'>X RPL 6</option>"+
+              //kelas 10 tkj
+                "<option value='X TKJ 1'>X TKJ 1</option>"+
+                "<option value='X TKJ 2'>X TKJ 2</option>"+
+                "<option value='X TKJ 3'>X TKJ 3</option>"+
+                "<option value='X TKJ 4'>X TKJ 4</option>"+
+                "<option value='X TKJ 5'>X TKJ 5</option>"+
+                "<option value='X TKJ 6'>X TKJ 6</option>"+
+              //kelas 11 rpl
+                "<option value='XI RPL 1'>XI RPL 1</option>"+
+                "<option value='XI RPL 2'>XI RPL 2</option>"+
+                "<option value='XI RPL 3'>XI RPL 3</option>"+
+                "<option value='XI RPL 4'>XI RPL 4</option>"+
+                "<option value='XI RPL 5'>XI RPL 5</option>"+
+                "<option value='XI RPL 6'>XI RPL 6</option>"+
+              //kelas 11 tkj
+                "<option value='XI TKJ 1'>XI TKJ 1</option>"+
+                "<option value='XI TKJ 2'>XI TKJ 2</option>"+
+                "<option value='XI TKJ 3'>XI TKJ 3</option>"+
+                "<option value='XI TKJ 4'>XI TKJ 4</option>"+
+                "<option value='XI TKJ 5'>XI TKJ 5</option>"+
+              //kelas 12 rpl
+                "<option value='XII RPL 1'>XII RPL 1</option>"+
+                "<option value='XII RPL 2'>XII RPL 2</option>"+
+                "<option value='XII RPL 3'>XII RPL 3</option>"+
+                "<option value='XII RPL 4'>XII RPL 4</option>"+
+                "<option value='XII RPL 5'>XII RPL 5</option>"+
+              //kelas 12 tkj
+                "<option value='XII TKJ 1'>XII TKJ 1</option>"+
+                "<option value='XII TKJ 2'>XII TKJ 2</option>"+
+                "<option value='XII TKJ 3'>XII TKJ 3</option>"+
+                "<option value='XII TKJ 4'>XII TKJ 4</option>"+
+              "</select>")
+            .appendTo("#tambah");
+            $("<label id='absen'>No Absen</label>")
+            .appendTo("#tambahlagi");
+            $("<input type='text' class='form-control' name='no_absen' id='iabsen'/>")
+            .appendTo("#tambahlagi");
+         }
+         else if(this.value == '1'){
+         $('#kelas').remove();
+         $('#ikelas').remove();
+         $('#absen').remove();
+         $('#iabsen').remove();
+         }
+         else{
+         $('#kelas').remove();
+         $('#ikelas').remove();
+         $('#absen').remove();
+         $('#iabsen').remove();
+         }
+        })
         
         function myNavFunction(id) {
             $("#date-popover").hide();
@@ -399,14 +426,6 @@
             console.log('nav ' + nav + ' to: ' + to.month + '/' + to.year);
         }
     </script>
-  
-  <script type="text/javascript">
-      $(function() {
-        //    fancybox
-          jQuery(".fancybox").fancybox();
-      });
-
-  </script>
   
 
   </body>

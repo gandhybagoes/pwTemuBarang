@@ -34,8 +34,8 @@
                       	<div class="col-md-4 col-sm-4 mb">
                       		<div class="white-panel pn donut-chart">
                       			<div class="white-header">
-                                <button data-toggle="modal" data-target="#myModal">
-                                  <h5><?php echo $u['nama_barang'] ?></h5>
+                                <button data-toggle="modal" data-target="#myModal" class="btn btn-info" style="height:40px; width:180px">
+                                  <b><?php echo $u['nama_barang'] ?></b>
                                 </button>  
                       			</div>
               								<div class="row">
