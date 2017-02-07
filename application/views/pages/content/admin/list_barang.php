@@ -45,7 +45,7 @@
                                               </div>
                                     </div><!-- col-lg-4 --></center></td>
                                   <!-- <td><span class="label label-info label-mini">Due</span></td> GET DARI DATABASE?? -->
-                                  <?php $profile = $this->session->userdata('profile'); if(($a['confirmA'] == "1" && $profile['0']['username_user'] == "Suko" && $a['confirmB'] == "0") || ($a['confirmB'] == "1" && $profile['0']['username_user'] == "Emil") && $a['confirmA'] == "0") {
+                                  <?php $profile = $this->session->userdata('profile');  if(($a['confirmA'] == "1" && $profile['0']['username_user'] == "Suko" && $a['confirmB'] == "0") || ($a['confirmB'] == "1" && $profile['0']['username_user'] == "Emil" && $a['confirmA'] == "0")) {
                                     ?>
                                       <td><center>
                                       <button class="btn btn-success btn-xs " disabled><i class="fa fa-check"></i></button>

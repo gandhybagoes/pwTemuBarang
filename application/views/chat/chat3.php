@@ -14,6 +14,7 @@
 </head>
 
 <body>
+<? $profile = $this->session->userdata('profile');?>
     <div class="container clearfix">
     <div class="people-list" id="people-list">
       <div class="search">
@@ -21,111 +22,24 @@
         <i class="fa fa-search"></i>
       </div>
       <ul class="list">
+      <? 
+      foreach($chatlist as $item) {?>
+      <a href="#" class="chatroom" value="<?= $item['id_chatlist']?>">
         <li class="clearfix">
           <img src="https://s3-us-west-2.amazonaws.com/s.cdpn.io/195612/chat_avatar_01.jpg" alt="avatar" />
           <div class="about">
-            <div class="name">Vincent Porter</div>
+            <div class="name"><?= $item['nama_user']; ?></div>
             <div class="status">
               <i class="fa fa-circle online"></i> online
             </div>
           </div>
         </li>
-        
-        <li class="clearfix">
-          <img src="https://s3-us-west-2.amazonaws.com/s.cdpn.io/195612/chat_avatar_02.jpg" alt="avatar" />
-          <div class="about">
-            <div class="name">Aiden Chavez</div>
-            <div class="status">
-              <i class="fa fa-circle offline"></i> left 7 mins ago
-            </div>
-          </div>
-        </li>
-        
-        
+        </a>
+        <? } ?>
       </ul>
     </div>
     
-    <div class="chat">
-      <div class="chat-header clearfix">
-        <img src="https://s3-us-west-2.amazonaws.com/s.cdpn.io/195612/chat_avatar_01_green.jpg" alt="avatar" />
-        
-        <div class="chat-about">
-          <div class="chat-with">Chat with Vincent Porter</div>
-          <div class="chat-num-messages">already 1 902 messages</div>
-        </div>
-        <i class="fa fa-star"></i>
-      </div> <!-- end chat-header -->
-      
-      <div class="chat-history">
-        <ul>
-          <li class="clearfix">
-            <div class="message-data align-right">
-              <span class="message-data-time" >10:10 AM, Today</span> &nbsp; &nbsp;
-              <span class="message-data-name" >Olia</span> <i class="fa fa-circle me"></i>
-              
-            </div>
-            <div class="message other-message float-right">
-              Hi Vincent, how are you? How is the project coming along?
-            </div>
-          </li>
-          
-          <li>
-            <div class="message-data">
-              <span class="message-data-name"><i class="fa fa-circle online"></i> Vincent</span>
-              <span class="message-data-time">10:12 AM, Today</span>
-            </div>
-            <div class="message my-message">
-              Are we meeting today? Project has been already finished and I have results to show you.
-            </div>
-          </li>
-          
-          <li class="clearfix">
-            <div class="message-data align-right">
-              <span class="message-data-time" >10:14 AM, Today</span> &nbsp; &nbsp;
-              <span class="message-data-name" >Olia</span> <i class="fa fa-circle me"></i>
-              
-            </div>
-            <div class="message other-message float-right">
-              Well I am not sure. The rest of the team is not here yet. Maybe in an hour or so? Have you faced any problems at the last phase of the project?
-            </div>
-          </li>
-          
-          <li>
-            <div class="message-data">
-              <span class="message-data-name"><i class="fa fa-circle online"></i> Vincent</span>
-              <span class="message-data-time">10:20 AM, Today</span>
-            </div>
-            <div class="message my-message">
-              Actually everything was fine. I'm very excited to show this to our team.
-            </div>
-          </li>
-          
-<!--           <li>
-            <div class="message-data">
-              <span class="message-data-name"><i class="fa fa-circle online"></i> Vincent</span>
-              <span class="message-data-time">10:31 AM, Today</span>
-            </div>
-            <i class="fa fa-circle online"></i>
-            <i class="fa fa-circle online" style="color: #AED2A6"></i>
-            <i class="fa fa-circle online" style="color:#DAE9DA"></i>
-          </li> -->
-          
-        </ul>
-        
-      </div> <!-- end chat-history -->
-      
-      <div class="chat-message clearfix">
-      <form id="chatform">
-        <textarea name="message-to-send" id="message-to-send" placeholder ="Type your message" rows="3"></textarea>
-                
-        <i class="fa fa-file-o"></i> &nbsp;&nbsp;&nbsp;
-        <i class="fa fa-file-image-o"></i>
-        
-        <button>Send</button>
-      </form>
-      </div> <!-- end chat-message -->
-      
-    </div> <!-- end chat -->
+<?= $chatroom; ?>
     
   </div> <!-- end container -->
 
@@ -133,7 +47,7 @@
   <li class="clearfix">
     <div class="message-data align-right">
       <span class="message-data-time" >{{time}}, Today</span> &nbsp; &nbsp;
-      <span class="message-data-name" >Olia</span> <i class="fa fa-circle me"></i>
+      <span class="message-data-name" >{{user}}</span> <i class="fa fa-circle me"></i>
     </div>
     <div class="message other-message float-right">
       {{messageOutput}}
@@ -155,8 +69,30 @@
   <script src='http://cdnjs.cloudflare.com/ajax/libs/jquery/2.1.3/jquery.min.js'></script>
 <script src='http://cdnjs.cloudflare.com/ajax/libs/handlebars.js/3.0.0/handlebars.min.js'></script>
 <script src='http://cdnjs.cloudflare.com/ajax/libs/list.js/1.1.1/list.min.js'></script>
+    <script type="text/javascript">
+     var a;
+     $('.chatroom').click(function(){
+      $.getScript(" <?php echo base_url('assets/chatpage/js/char.js') ?>");
+      return false;
+     });
 
-    <script src="<?php echo base_url('assets/chatpage/') ?>js/index.js"></script>
+      $('#sendMessage').click(function() {
+          sendMessage('<?= $profile['0']['nama_user']; ?>');
+      return false;
+      });
+
+      $('#message-to-send').keyup(function(event) {
+       if(event.key == 'Enter'){
+          sendMessage('<?= $profile['0']['nama_user']; ?>');
+        }
+      return false;
+      });
+     
+
+    </script>
+    
+    
+    
 
 </body>
 </html>

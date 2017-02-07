@@ -335,8 +335,6 @@
                   bootbox.alert('Delete Success!');
                   setTimeout("bootbox.hideAll()", 500);
                   location.reload();
-                  // $('#tmbhkateg [data-dismiss="modal"]').click();
-                   // setTimeout("loadMain('');", 500);
                 },
                 'error' : function(data){
                   alert('ajax error');
@@ -377,10 +375,17 @@
                 'method' : 'POST',
                 'url' : '<?= base_url('admin/confirmTake/');?>'+a,
                 'success' : function(data){
-                  bootbox.alert('Konfirmasi Sukses!');
+                  var res = data.split(",");
+                  bootbox.alert(res[0]);
                   setTimeout("bootbox.hideAll()", 500);
                   // $('#tmbhkateg [data-dismiss="modal"]').click();
-                   // setTimeout("loadMain('');", 500);
+
+                  if(res[1]=="Suko"){
+                    window.location.replace("<?= base_url('admin/listBarang?act=take&&id_brg=') ?>"+a+"");
+                  }
+                  else {
+                  setTimeout("location.reload()", 500);
+                  }
                 },
                 'error' : function(data){
                   alert('ajax error');

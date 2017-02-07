@@ -54,13 +54,10 @@ class Modelmu extends CI_Model {
                 return $this->db->insert($table, $content);
         }
 
-        function updatedata($table,$data, $where){
+    function updatedata($table,$data, $where){
         $this->db->update($table,$data, $where);
     }
 
-    function updatedatabrg($where,$data,$table){
-        $this->db->update($table,$data, $where);
-    }
 
     function updatedatalog($dimana,$datalog,$table){
         $this->db->where($dimana);
@@ -92,5 +89,28 @@ class Modelmu extends CI_Model {
     function inputbarang($data, $table){
         $this->db->insert($table, $data);
     }
+
+    function showChatList($where) {
+        $query = $this->db->select('profile.nama_user, chatlist.id_chatlist, chatlist.name_chatlist, chatlist.date_chatlist')
+                 ->from('chatlist')
+                 ->join('profile','chatlist.id_recipient = profile.id_user','inner')
+                 ->where($where)
+                 ->get();
+        return $query->result_array();
+    }
+
+    function showChatRoom($where) {
+        $query = $this->db->select('*')
+                          ->from('chat')
+                          ->where($where)
+                          ->get();
+        return $query->result_array();
+
+    }
+
+    // function kembaliBarang($id){
+    //     $query = $this->db->select('*')
+    //                       ->from('')
+    // }
 
 }

@@ -1,5 +1,8 @@
+function aa(){
+  alert('text');
+}
 (function(){
-  
+
   var chat = {
     messageToSend: '',
     messageResponses: [
@@ -55,19 +58,25 @@
     },
     
     addMessage: function() {
-            // $.ajax({
-            //   type: "POST",
-            //   url: "http://localhost/pwTemuBarang/chat/send",
-            //   data: { chat_msg: $('#message-to-send').val()},
-            //   success: function(data){
-                 this.messageToSend = this.$textarea.val()
-                 this.render(); 
-            //   },
-            //   error: {console.log('error');}
-            // });
-      // this.messageToSend = this.$textarea.val()
-             
+
+                 $.ajax({
+                'data' : $('#formchat').serialize(),
+                'method' : 'POST',
+                'url' : "http://localhost:8888/pwTemuBarang/chat/send",
+                'success' : function(data){
+                  // alert('access');
+                 // this.messageToSend = this.$textarea.val();
+                 // this.render(); 
+                 
+                },
+                'error' : function(data){
+                  alert('ajax error' + data);
+                }
+
+              });
+
     },
+
     addMessageEnter: function(event) {
         // enter was pressed
         if (event.keyCode === 13) {

@@ -45,6 +45,12 @@ class Admin extends CI_Controller {
 							$id_brg = $this->input->get('id_brg');
 							$this->modelmu->delete($id_brg);
 						}
+						else if($this->input->get('act')=="take"){
+							$id_brg = $this->input->get('id_brg');
+							$dota['kmbl'] = $this->modelmu->kembaliBarang($id_brg);
+							$data['content'] = $this->load->view('pages/content/admin/kembali_barang', $dota , TRUE);
+							$this->load->view("pages/base", $data);
+						}
 		 		}
 		 		else {
 		 		redirect('login?err=ad');
@@ -283,24 +289,24 @@ class Admin extends CI_Controller {
 			if($check['confirmB'] == '1' && $check['confirmA'] == '0'){
 			$data = array('confirmA' => '1', 
 						  'id_status' => 'st3');
+			$this->modelmu->updatedata('barang', $data, array('id_barang' => $id));
+			echo "Konfirmasi Sukses!,Suko";
 			}
 			else if($check['confirmB'] == '0' && $check['confirmA'] == '0'){
-			$data = array('confirmA' => '1', 
-						  'id_status' => 'st2');
+			echo "Konfirmasi Pak Emil terlebih dulu";
 			}
-			$this->modelmu->updatedata('barang', $data, array('id_barang' => $id));
 		}
 		else if(strpos($nama_usr, 'Emil') !== false){
 			//jika nama mengandung emil
 			if($check['confirmA'] == '1' && $check['confirmB'] == '0'){
-			$data = array('confirmB' => '1', 
-						  'id_status' => 'st3');
+			echo "Kesalahan Data, Konfirmasi Gagal";
 			}
 			else if($check['confirmA'] == '0' && $check['confirmB'] == '0'){
 			$data = array('confirmB' => '1', 
 						  'id_status' => 'st2');
-			}
 			$this->modelmu->updatedata('barang', $data, array('id_barang' => $id));
+			echo "Konfirmasi Sukses!,Emil";
+			}
 			} //confirmTake untuk konfirmasi ambil barang
 		}
 
