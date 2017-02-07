@@ -31,6 +31,16 @@ class Modelmu extends CI_Model {
             return $query->result_array();
         }
 
+
+         public function selectAllUser()
+        {
+            $query = $this->db->select('profile.id_profile, profile.nama_user, profile.username_user, profile.kelas_user, profile.noabsen_user, profile.notelp_user, profile.foto_user, profile.id_user, login.password_user, login.type_user, login.nama_user as nmuser, login.id_user')
+                    ->from('profile')
+                    ->join('login', 'profile.id_user = login.id_user', 'inner')
+                    ->get();
+            return $query->result_array();
+        }
+
         public function selectUser(){
             $query = $this->db->select('login.password_user, login.type_user, profile.username_user, profile.nama_user, profile.notelp_user, profile.foto_user, profile.kelas_user, profile.noabsen_user')
                     ->from('profile')
@@ -39,6 +49,7 @@ class Modelmu extends CI_Model {
                 return $query->result_array();
         
                 } //selectUser untuk select User dan Profile
+
 
         function ambilpass($where){
             $query = $this->db->select('profile.id_profile, profile.nama_user, profile.username_user, profile.notelp_user, profile.foto_user, profile.id_user, login.password_user, login.type_user, login.nama_user as nmuser, login.id_user')
@@ -86,9 +97,31 @@ class Modelmu extends CI_Model {
         return $query->num_rows();
     }
 
+    function hitungidlogin()
+    {
+        //$query = $this->db->query("SELECT * FROM login");
+       $query = $this->db->select('*')
+                          ->from('login')
+                          //->like('id_barang '.$idjns."%")
+                          ->get();
+        return $query->num_rows();
+    }
+
+    function hitungidprofile()
+    {
+        //$query = $this->db->query("SELECT * FROM login");
+       $query = $this->db->select('*')
+                          ->from('profile')
+                          //->like('id_barang '.$idjns."%")
+                          ->get();
+        return $query->num_rows();
+    }
+
+
     function inputbarang($data, $table){
         $this->db->insert($table, $data);
     }
+
 
     function showChatList($where) {
         $query = $this->db->select('profile.nama_user, chatlist.id_chatlist, chatlist.name_chatlist, chatlist.date_chatlist')
@@ -112,5 +145,9 @@ class Modelmu extends CI_Model {
     //     $query = $this->db->select('*')
     //                       ->from('')
     // }
+
+    function inputuser($data, $table){
+        $this->db->insert($table, $data);
+    }
 
 }

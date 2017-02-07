@@ -1,4 +1,4 @@
-<!--main content start-->
+main content start-->
       <section id="main-content">
           <section class="wrapper">
           	<h3><i class="fa fa-angle-right"></i> List User</h3>
@@ -7,17 +7,17 @@
                       <div class="content-panel">
                           <table class="table table-striped table-advance table-hover" id="listbrg">
 	                  	  	 <!--  <h4><i class="fa fa-angle-right"></i> Advanced Table</h4> -->
-                           <a href="<?= base_url('admin/tambah_barang') ?>"><button class="btn btn-success"><i class="fa fa-plus"></i> Tambah</button></a>
+                           <a href="<?= base_url('admin/tambah_user') ?>"><button class="btn btn-success"><i class="fa fa-plus"></i> Tambah User</button></a>
 	                  	  	  <hr>
                               <thead>
                               <tr>
-                                  <th><i class="fa fa-bullhorn"></i> Nama</th>
-                                  <th class="hidden-phone"><i class="fa fa-question-circle"></i> Username</th>
-                                  <th class="hidden-phone"><i class="fa fa-question-circle"></i> Password</th>
-                                  <th class="hidden-phone"><i class="fa fa-question-circle"></i> No Telp</th>
-                                  <th><i class="fa fa-bookmark"></i> Foto</th>
-                                  <th><i class=" fa fa-edit"></i> Kelas</th>
-                                  <th><i class=" fa fa-edit"></i> No Absen</th>
+                                  <th><i class="glyphicon glyphicon-user"></i> Name</th>
+                                  <th class="hidden-phone"><i class="glyphicon glyphicon-home"></i> Kelas</th>
+                                  <th class="hidden-phone"><i class="glyphicon glyphicon-list-alt"></i> No Absen</th>
+                                  <th><i class="glyphicon glyphicon-earphone"></i> No Telepon</th>
+                                  <th><i class="glyphicon glyphicon-eye-open"></i> Status</th>
+                                  <th><i class="glyphicon glyphicon-picture"></i> Foto</th>
+
                                   <th><i class=" fa fa-edit"></i> Action</th>
 
                                   <th></th>
@@ -26,33 +26,21 @@
                               <tbody>
                               <?php 
                               //print_r($listbrg);
-                              foreach($listbrg as $a) { ?>
+                              foreach($listusr as $a) {
+                              ?>
                               <tr>
-                                  <td><a href="basic_table.html#"><?= $a['nama_barang']; ?></a></td>
-                                  <td class="hidden-phone"><?= $a['jenis_barang']; ?></td>
-                                  <td class="hidden-phone"><?= $a['ket_barang']; ?></td>
-                                  <td><?= $a['lokasi_barang']; ?></td>
-                                   <?= $a['code_status']; ?>
-                                    <td><?= '<a href="javascript:;" id="foto_click" >'$a['foto_barang']; '</a>'?></td>
-                                  <!-- <td><span class="label label-info label-mini">Due</span></td> GET DARI DATABASE?? -->
-                                  <?php if(($a['confirmA'] == 1 && $profile['0']['username_user'] == "Suko") || ($a['confirmB'] == 1 && $profile['0']['username_user'] == "Emil")) {
-                                    ?>
+                                <td><?php echo $a['nama_user']; ?></td>
+                                <td><?php if($a['kelas_user'] == null) { echo "Tidak ada kelas"; } else { echo $a['kelas_user']; } ?></td>
+                                <td><?php if($a['noabsen_user'] == null) { echo "Tidak ada nomor absen"; } else { echo $a['noabsen_user']; }?></td>
+                                <td><?php echo $a['notelp_user']; ?></td>
+                                <td><?php if($a['type_user'] == 1) { echo "Admin"; } elseif($a['type_user'] == 2) { echo "CS"; } else { echo "Siswa"; }?></td>
+                                <td><img src="<?php echo base_url();?>assets/img/pp/<?php echo $a['foto_user']; ?>" width="80" height="80"></td>
+                                <!-- button action -->
+                                
                                       <td>
-                                      <button class="btn btn-success btn-xs" disabled><i class="fa fa-check"></i></button>
-                                      <a href="<?= base_url('admin/edit_barang?id_brg='); echo $a['id_barang']; ?>"><button class="btn btn-primary btn-xs"><i class="fa fa-pencil"></i></button></a>
-                                     <button id="hapusbarang"  class="btn btn-danger btn-xs" value="<?= $a['id_barang'] ?>"><i class="fa fa-trash-o "></i></button>
-                                      </td> 
-                                    <?php } else if($a['confirmA'] == 1 && $a['confirmB'] == 1) { ?>
-                                      <td>
-                                      <a href="<?= base_url('admin/edit_barang?id_brg='); echo $a['id_barang']; ?>"><button class="btn btn-primary btn-xs"><i class="fa fa-pencil"></i></button></a>
-                                      <button id="hapusbarang" class="btn btn-danger btn-xs" value="<?= $a['id_barang'] ?>"><i class="fa fa-trash-o "></i></button>
-                                      <?php } else{?>
-                                       <td>
-                                          <button class="btn btn-success btn-xs"><i class="fa fa-check"></i></button>
-                                          <a href="<?= base_url('admin/edit_barang?id_brg='); echo $a['id_barang']; ?>"><button class="btn btn-primary btn-xs"><i class="fa fa-pencil"></i></button></a>
-                                          <button id="hapusbarang"  class="btn btn-danger btn-xs" value="<?= $a['id_barang'] ?>"><i class="fa fa-trash-o "></i></button>
-                                      </td> 
-                                  <?php } ?>
+                                      <a href="<?= base_url('admin/edit_user?id_usr='); echo $a['id_user']; ?>"><button class="btn btn-primary btn-xs"><i class="fa fa-pencil"></i></button></a>
+                                     <button id="hapususer"  class="btn btn-danger btn-xs" value="<?= $a['id_user'] ?>"><i class="fa fa-trash-o "></i></button>
+                                      </td>  
                               </tr>
                               <?php } ?>
                               </tbody>
@@ -62,4 +50,4 @@
               </div><!-- /row -->
 
 		</section>
-      </section><!-- /MAIN CONTENT -->
+      </section><!-- /MAIN CONTENT 
